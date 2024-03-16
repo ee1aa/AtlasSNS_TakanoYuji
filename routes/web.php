@@ -19,13 +19,15 @@
 //Auth::routes();
 
 
-//ログアウト中のページ
+//ログアウト中のページ　ログイン
 Route::get('/login', 'Auth\LoginController@login');
 Route::post('/login', 'Auth\LoginController@login');
 
+//ログアウト中のページ　ユーザー登録
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/register', 'Auth\RegisterController@register');
 
+//ログアウト中のページ　登録完了
 Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
 

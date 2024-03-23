@@ -24,8 +24,8 @@ Route::get('/login', 'Auth\LoginController@login')->name('login');
 Route::post('/login', 'Auth\LoginController@login');
 
 //ログアウト中のページ　ユーザー登録
-Route::get('/register', 'Auth\RegisterController@register');
-Route::post('/register', 'Auth\RegisterController@register');
+Route::get('/register', 'Auth\RegisterController@registerView');
+Route::post('/registerCreate', 'Auth\RegisterController@register');
 
 //ログアウト中のページ　登録完了
 Route::get('/added', 'Auth\RegisterController@added');

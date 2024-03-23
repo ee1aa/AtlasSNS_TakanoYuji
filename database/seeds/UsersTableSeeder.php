@@ -14,19 +14,19 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             ['username' => 'Atlas一郎',
             'mail' => 'atlas1@gmail.com',
-            'password' => 'password1'],
+            'password' => bcrypt('password1')],
             ['username' => 'Atlas二郎',
             'mail' => 'atlas2@gmail.com',
-            'password' => 'password2'],
+            'password' => bcrypt('password1')],
             ['username' => 'Atlas三郎',
             'mail' => 'atlas3@gmail.com',
-            'password' => 'password3'],
+            'password' => bcrypt('password3')],
             ['username' => 'Atlas四郎',
             'mail' => 'atlas4@gmail.com',
-            'password' => 'password4'],
+            'password' => bcrypt('password4')],
             ['username' => 'Atlas五郎',
             'mail' => 'atlas5@gmail.com',
-            'password' => 'password5']
+            'password' => bcrypt('password5')]
         ]);
     }
 }

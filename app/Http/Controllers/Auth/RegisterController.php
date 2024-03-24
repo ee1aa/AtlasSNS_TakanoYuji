@@ -42,6 +42,7 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    //ユーザー新規登録処理　=post処理
     public function register(RegisterFormRequest $request)
     {
         if($request->isMethod('post')){
@@ -58,7 +59,11 @@ class RegisterController extends Controller
                 'password' => bcrypt($password),
             ]);
 
-            return redirect('added');
+            //セッションへデータを保存する
+            $request->session()->put('username');
+
+            //セッションを使用してユーザー名を表示させる
+            return redirect('added')->with('username', $username);
         }
 
         return view('auth.register');

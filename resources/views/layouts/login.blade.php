@@ -22,16 +22,19 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a><img src="images/logo.png"></a></h1>
+            <h1><a href="{{ route('/top') }}"><img src="images/atlas.png" alt="ロゴ"></a></h1>
             <div id="">
                 <div id="">
                     <p>{{ session('username') }}さん<img src="images/arrow.png"></p>
-                <div>
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
-                </ul>
+                </div>
+                <div class="accordion">
+                    <p class="nav-btn">ボタン</p>
+                    <ul class="nav-menu">
+                        <li><a href="/top">ホーム</a></li>
+                        <li><a href="/profile">プロフィール</a></li>
+                        <li><a href="/logout">ログアウト</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
@@ -58,7 +61,7 @@
     </div>
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1min.js"></script>
+    <script src="{{ asset('/js/script.js') }}"></script>
 </body>
 </html>

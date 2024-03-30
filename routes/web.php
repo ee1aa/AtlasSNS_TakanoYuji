@@ -32,11 +32,36 @@ Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
 
 //ログイン中のページ
-Route::post('/top','PostsController@index')->middleware('auth');
 
-Route::get('/profile','UsersController@profile')->middleware('auth');
+// ミドルウェアを使用して複数のルートに適用する
+Route::middleware(['auth'])->group(function () {
+    // ここにauthミドルウェアが適用されるルートを定義する
+    Route::post('/top', [PostsController::class, 'index']);
+    Route::get('/top', [PostsController::class, 'index']);
 
-Route::get('/search','UsersController@index')->middleware('auth');
+    Route::post('/profile', [UsersController::class, 'profile']);
+    Route::get('/profile', [UsersController::class, 'profile']);
 
-Route::get('/follow-list','PostsController@index')->middleware('auth');
-Route::get('/follower-list','PostsController@index')->middleware('auth');
+    Route::post('/search', [UsersController::class, 'search']);
+    Route::get('/search', [UsersController::class, 'search']);
+
+    Route::post('/follow-list', [FollowsController::class, 'followList']);
+    Route::get('/follow-list', [FollowsController::class, 'followList']);
+
+    Route::post('/follower-list', [FollowsController::class, 'followerList']);
+    Route::get('/follower-list', [FollowsController::class, 'followerList']);
+});
+
+Route::post('/top','PostsController@index');
+
+// Route::get('/profile','UsersController@profile');
+
+// Route::get('/search','UsersController@index');
+
+// Route::get('/follow-list','PostsController@index');
+// Route::get('/follower-list','PostsController@index');
+
+// Atlasロゴにトップページへ遷移するリンクを設置する
+Route::get('/top', function () {
+    return view('posts.index');
+})->name('/top');

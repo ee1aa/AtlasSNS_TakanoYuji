@@ -40,7 +40,7 @@ class LoginController extends Controller
     }
 
     public function login(Request $request){
-        if($request->isMethod('post')){
+        if($request->isMethod('post')){ //postでデータが送られてきたら
 
             $data=$request->only('mail','password');
             // ログインが成功したら、トップページへ
@@ -49,6 +49,6 @@ class LoginController extends Controller
                 return redirect('/top');
             }
         }
-        return view("auth.login");
+        return view("auth.login"); //getでアクセスされたら
     }
 }

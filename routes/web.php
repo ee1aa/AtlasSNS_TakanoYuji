@@ -56,6 +56,11 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     Route::post('/follower-list', [FollowsController::class, 'followerList']);
     Route::get('/follower-list', [FollowsController::class, 'followerList']);
+
+    // // Atlasロゴにトップページへ遷移するリンクを設置する
+    // Route::get('/top', function () {
+    // return view('posts.index');
+    // })->name('/top');
 });
 
 // Route::post('/top','PostsController@index');
@@ -66,8 +71,3 @@ Route::middleware(['web', 'auth'])->group(function () {
 
 // Route::get('/follow-list','PostsController@index');
 // Route::get('/follower-list','PostsController@index');
-
-// Atlasロゴにトップページへ遷移するリンクを設置する
-Route::get('/top', function () {
-    return view('posts.index');
-})->name('/top');

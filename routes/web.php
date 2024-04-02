@@ -18,12 +18,8 @@
 
 //Auth::routes();
 
+// LaravelのルーティングクラスであるRouteクラスを参照する
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\Auth\LoginController;
-use app\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\PostsController;
-use App\Http\Controllers\UsersController;
-use App\Http\Controllers\FollowsController;
 
 //ログアウト中のページ　ログイン
 Route::get('/login', 'Auth\LoginController@login')->name('login');
@@ -57,17 +53,8 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::post('/follower-list', [FollowsController::class, 'followerList']);
     Route::get('/follower-list', [FollowsController::class, 'followerList']);
 
-    // // Atlasロゴにトップページへ遷移するリンクを設置する
-    // Route::get('/top', function () {
-    // return view('posts.index');
-    // })->name('/top');
+    // Atlasロゴにトップページへ遷移するリンクを設置する
+    Route::get('/top', function () {
+    return view('posts.index');
+    })->name('/top');
 });
-
-// Route::post('/top','PostsController@index');
-
-// Route::get('/profile','UsersController@profile');
-
-// Route::get('/search','UsersController@index');
-
-// Route::get('/follow-list','PostsController@index');
-// Route::get('/follower-list','PostsController@index');

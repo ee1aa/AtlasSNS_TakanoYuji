@@ -18,6 +18,12 @@
 
 //Auth::routes();
 
+use Illuminate\Support\Facades\Route;
+use app\Http\Controllers\Auth\LoginController;
+use app\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\FollowsController;
 
 //ログアウト中のページ　ログイン
 Route::get('/login', 'Auth\LoginController@login')->name('login');
@@ -34,7 +40,7 @@ Route::post('/added', 'Auth\RegisterController@added');
 //ログイン中のページ
 
 // ミドルウェアを使用して複数のルートに適用する
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['web', 'auth'])->group(function () {
     // ここにauthミドルウェアが適用されるルートを定義する
     Route::post('/top', [PostsController::class, 'index']);
     Route::get('/top', [PostsController::class, 'index']);
@@ -52,7 +58,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/follower-list', [FollowsController::class, 'followerList']);
 });
 
-Route::post('/top','PostsController@index');
+// Route::post('/top','PostsController@index');
 
 // Route::get('/profile','UsersController@profile');
 

@@ -26,19 +26,10 @@
         <div id = "head">
             <h1 class="logo"><a href="{{ route('/top') }}"><img src="images/atlas.png" alt="ロゴ"></a></h1>
             <div class="nav-open">
-                <p class="username">{{ Auth::user()->username }}さん</p>
+                <p class="username">{{ Auth::user()->username }} さん</p>
                 <nav class="accordion">
                     <div class="menu-trigger">
                         <p>></p>
-                    </div>
-                </nav>
-                <nav class="g-navi">
-                    <div class="container nav-wrapper">
-                        <ul>
-                            <li class="nav-item active"><a class="nav-link" href="{{ route('/top') }}">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">プロフィール編集</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/logout">ログアウト</a></li>
-                        </ul>
                     </div>
                 </nav>
                 <div class="icon">
@@ -53,15 +44,24 @@
         </div >
         <div id="side-bar">
             <div id="confirm">
+                <nav class="g-navi">
+                    <div class="container nav-wrapper">
+                        <ul>
+                            <li class="nav-item active"><a class="nav-link" href="{{ route('/top') }}">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">プロフィール編集</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/logout">ログアウト</a></li>
+                        </ul>
+                    </div>
+                </nav>
                 <p>{{ Auth::user()->username }}さんの</p>
                 <div>
-                <p>フォロー数</p>
-                <p>{{ $follow_count }}名</p>
+                    <p>フォロー数</p>
+                    <p>名</p>
                 </div>
                 <p class="btn"><a href="follow-list">フォローリスト</a></p>
                 <div>
-                <p>フォロワー数</p>
-                <p>{{ $follower_count }}名</p>
+                    <p>フォロワー数</p>
+                    <p>名</p>
                 </div>
                 <p class="btn"><a href="follower-list">フォロワーリスト</a></p>
             </div>

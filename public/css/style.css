@@ -6,17 +6,30 @@ body {}
 
 /* header */
 header {
+    padding: 10px;
     background: #186AC9;
 }
 
+p {
+    color: #f7ecf1;
+}
+
 /* main content */
+#head {
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+}
+
 #row {
     display: flex;
     flex-flow: row wrap;
 }
 
 #container {
+    height: 100%;
     flex: 0 0 80%;
+    border-right: 1px solid #727272;
 }
 
 #side-bar {
@@ -24,16 +37,24 @@ header {
     border-left: 1px solid #727272;
 }
 
-.logo {
-    display: flex;
+.username {
+    margin: 0 10px;
 }
 
-.username {
+.icon {
+    margin: 0 20px;
+}
+
+.nav-open {
     display: flex;
+    justify-content: flex-end;
+}
+
+.nav-wrapper {
+    display: block;
 }
 
 .menu-trigger {
-    display: flex;
     position: relative;
     border-top: none;
     outline: 0;
@@ -52,9 +73,10 @@ header {
 }
 
 .g-navi {
-    display: none;
+    display: flex;
     position: fixed;
-    z-index: 2;
+    transform: translateY(-100%);
+    z-index: 1;
     transition: .5s ease-in-out;
 }
 
@@ -63,7 +85,6 @@ header {
 }
 
 .g-navi.active {
-    display: flex;
     transform: translateY(0%);
     transition: .5s ease-in-out;
 }

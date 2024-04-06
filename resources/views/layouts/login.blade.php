@@ -24,9 +24,9 @@
 <body>
     <header>
         <div id = "head">
-            <h1 class="logo"><a href="{{ route('/top') }}"><img src="images/atlas.png" alt="ロゴ"></a></h1>
+            <h1 class="logo"><a href="{{ route('/top') }}"><img src="images/atlas.png" alt="ロゴ"width="30%" height="30%"></a></h1>
             <div class="nav-open">
-                <p class="username">{{ Auth::user()->username }} さん</p>
+                <p class="username">{{ Auth::user()->username }}　さん</p>
                 <nav class="accordion">
                     <div class="menu-trigger">
                         <p>></p>

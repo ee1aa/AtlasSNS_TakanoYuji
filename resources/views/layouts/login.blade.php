@@ -23,18 +23,17 @@
     <header>
         <div id = "head">
             <h1><a href="{{ route('/top') }}"><img src="images/atlas.png" alt="ロゴ"></a></h1>
-            <div id="">
-                <div id="">
-                    <p>{{ session('username') }}さん<img src="images/arrow.png"></p>
-                </div>
-                <div class="accordion">
-                    <p class="nav-btn">ボタン</p>
-                    <ul class="nav-menu">
-                        <li><a href="/top">ホーム</a></li>
-                        <li><a href="/profile">プロフィール</a></li>
-                        <li><a href="/logout">ログアウト</a></li>
+            <div class="nav-open">
+                <p>{{ Auth::user()->username }}さん</p>
+                <nav>
+                    <a href="" class="menu-btn"></a>
+                    <ul class="tag">
+                            <li class="nav-item active"><a class="nav-link" href="{{ route('/top') }}">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">プロフィール編集</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">ログアウト</a></li>
                     </ul>
-                </div>
+                </nav>
+                <img class="icon" src="{{ asset('images/icon1.png') }}">
             </div>
         </div>
     </header>
@@ -61,7 +60,5 @@
     </div>
     <footer>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.7.1min.js"></script>
-    <script src="{{ asset('/js/script.js') }}"></script>
-</body>
-</html>
+    <!-- Bootstrap JavaScript -->
+    <script src="{{ asset('js/app.js') }}"></script>

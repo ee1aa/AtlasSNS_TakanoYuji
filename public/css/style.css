@@ -1,22 +1,69 @@
 @charset "utf-8";
-html{
-}
-body{
-}
+
+html {}
+
+body {}
+
 /* header */
-header{
-    background:#186AC9;
+header {
+    background: #186AC9;
 }
 
 /* main content */
-#row{
+#row {
     display: flex;
     flex-flow: row wrap;
 }
-#container{
+
+#container {
     flex: 0 0 80%;
 }
-#side-bar{
+
+#side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+}
+
+.logo {
+    display: flex;
+}
+
+.username {
+    display: flex;
+}
+
+.menu-trigger {
+    display: flex;
+    position: relative;
+    border-top: none;
+    outline: 0;
+    cursor: pointer;
+}
+
+.menu-trigger p {
+    display: flex;
+    position: absolute;
+    transition: .35s ease-in-out;
+    transform: rotate(90deg);
+}
+
+.menu-trigger.active p {
+    transform: rotate(-90deg);
+}
+
+.g-navi {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    transition: .5s ease-in-out;
+}
+
+.g-navi ul {
+    display: block;
+}
+
+.g-navi.active {
+    display: flex;
+    transform: translateY(0%);
+    transition: .5s ease-in-out;
 }

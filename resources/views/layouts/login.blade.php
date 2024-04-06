@@ -18,22 +18,32 @@
     <!--iphoneのアプリアイコン指定-->
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     <!--OGPタグ/twitterカード-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/script.js"></script>
 </head>
 <body>
     <header>
         <div id = "head">
-            <h1><a href="{{ route('/top') }}"><img src="images/atlas.png" alt="ロゴ"></a></h1>
+            <h1 class="logo"><a href="{{ route('/top') }}"><img src="images/atlas.png" alt="ロゴ"></a></h1>
             <div class="nav-open">
-                <p>{{ Auth::user()->username }}さん</p>
-                <nav>
-                    <a href="" class="menu-btn"></a>
-                    <ul class="tag">
+                <p class="username">{{ Auth::user()->username }}さん</p>
+                <nav class="accordion">
+                    <div class="menu-trigger">
+                        <p>></p>
+                    </div>
+                </nav>
+                <nav class="g-navi">
+                    <div class="container nav-wrapper">
+                        <ul>
                             <li class="nav-item active"><a class="nav-link" href="{{ route('/top') }}">HOME</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">プロフィール編集</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">ログアウト</a></li>
-                    </ul>
+                            <li class="nav-item"><a class="nav-link" href="/logout">ログアウト</a></li>
+                        </ul>
+                    </div>
                 </nav>
-                <img class="icon" src="{{ asset('images/icon1.png') }}">
+                <div class="icon">
+                    <img src="{{ asset('images/icon1.png') }}">
+                </div>
             </div>
         </div>
     </header>

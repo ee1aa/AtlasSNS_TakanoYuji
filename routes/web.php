@@ -42,7 +42,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('/top', [PostsController::class, 'index']);
 
     Route::post('/profile', [UsersController::class, 'profile']);
-    Route::get('/profile', [UsersController::class, 'profile']);
+    Route::get('/profile', [UsersController::class, 'profile'])->name('profile');
 
     Route::post('/search', [UsersController::class, 'search']);
     Route::get('/search', [UsersController::class, 'search']);
@@ -52,6 +52,8 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     Route::post('/follower-list', [FollowsController::class, 'followerList']);
     Route::get('/follower-list', [FollowsController::class, 'followerList']);
+
+    Route::get('/logout', 'Auth\LoginController@logout');
 
     // Atlasロゴにトップページへ遷移するリンクを設置する
     Route::get('/top', function () {

@@ -48,8 +48,8 @@
                     <div class="container nav-wrapper">
                         <ul>
                             <li class="nav-item active"><a class="nav-link" href="{{ route('/top') }}">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">プロフィール編集</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/logout">ログアウト</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/profile">プロフィール編集</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/login">ログアウト</a></li>
                         </ul>
                     </div>
                 </nav>

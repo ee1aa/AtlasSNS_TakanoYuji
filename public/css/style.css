@@ -10,7 +10,7 @@ header {
     background: #186AC9;
 }
 
-p {
+.username {
     color: #f7ecf1;
 }
 
@@ -54,6 +54,7 @@ p {
 }
 
 .menu-trigger {
+    color: #f7ecf1;
     margin: 0 10px;
     position: relative;
     border-top: none;

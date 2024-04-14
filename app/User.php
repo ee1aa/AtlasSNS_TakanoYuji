@@ -27,15 +27,29 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function follow($user_id) //フォローする
+    {
+        return $this->follows()->attach($user_id);
+    }
+
+    public function unfollow($user_id) //フォロー解除
+    {
+        return $this->follows()->detach($user_id);
+    }
+
+    public function isFollowing($user_id) //フォローしているか確認
+    {
+        return (boolean) $this->follows()->where('followed_id', $user_id)->exists();
+    }
+
+    public function isFollowed($user_id) //フォローされているか確認
+    {
+        return (boolean) $this->followers()->where('following_id', $user_id)->exists();
+    }
+
     //投稿とのリレーション定義
     //「１対多」の「多」側を指定 → メソッド名は複数形でhasManyを使う
     public function posts(){
         return $this->hasMany('app\Post.php');
-    }
-
-    //フォロー・フォロワーのリレーション定義
-    //「多対多」BelongsToManyを使う
-    public function followers(): BelongsToMany {
-        return $this->belongsToMany('app\User.php', 'follows', 'follow_id', 'follower_id')->withTimestamps();
     }
 }

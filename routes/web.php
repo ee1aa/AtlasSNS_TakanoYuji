@@ -41,6 +41,8 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::post('/top', [PostsController::class, 'index']);
     Route::get('/top', [PostsController::class, 'index']);
 
+    Route::post('/top', 'PostsController@postCreate');
+
     Route::post('/profile', 'UsersController@profile');
     Route::get('/profile', 'UsersController@profile')->name('profile');
 

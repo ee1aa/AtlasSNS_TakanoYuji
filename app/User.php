@@ -50,6 +50,6 @@ class User extends Authenticatable
     //投稿とのリレーション定義
     //「１対多」の「多」側を指定 → メソッド名は複数形でhasManyを使う
     public function posts(){
-        return $this->hasMany('app\Post.php');
+        return $this->hasMany('App\Post');
     }
 }

@@ -13,7 +13,8 @@ class PostsController extends Controller
     public function index(){
         $user = Auth::user(); //ログイン認証しているユーザーの取得
         $username = Auth::user()->username;
-        return view('posts.index', ['posts'=>$posts]); //bladeへデータを送る
+        $posts = Post::all(); //投稿を全て取得
+        return view('posts.index', ['posts'=>$posts]); //ビューへデータを送って表示
     }
 
     //投稿機能

@@ -20,6 +20,7 @@
 
 // LaravelのルーティングクラスであるRouteクラスを参照する
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostsController;
 
 //ログアウト中のページ　ログイン
 Route::get('/login', 'Auth\LoginController@login')->name('login');
@@ -38,8 +39,8 @@ Route::post('/added', 'Auth\RegisterController@added');
 // ミドルウェアを使用して複数のルートに適用する
 Route::middleware(['web', 'auth'])->group(function () {
     // ここにauthミドルウェアが適用されるルートを定義する
-    Route::post('/top', [PostsController::class, 'index']);
-    Route::get('/top', [PostsController::class, 'index']);
+    Route::post('/top', 'PostsController@index');
+    Route::get('/top', 'PostsController@index');
 
     Route::post('/top', 'PostsController@postCreate');
 

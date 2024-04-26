@@ -11,10 +11,8 @@ class PostsController extends Controller
 {
     //
     public function index(){
-        $user = Auth::user(); //ログイン認証しているユーザーの取得
-        $username = Auth::user()->username;
-        $posts = Post::all(); //投稿を全て取得
-        return view('posts.index', ['posts'=>$posts]); //ビューへデータを送って表示
+        $posts = Post::latest()->get(); //投稿を最新のものから順に取得
+        return view('index', ['posts'=>$posts]); //ビューへデータを送って表示
     }
 
     //投稿機能
@@ -28,6 +26,7 @@ class PostsController extends Controller
         //Postテーブルの'user_id', 'post'に変数を当てはめる
         Post::create([
             'user_id' => Auth::user()->id,
+            'name' => Auth::user()->name,
             'post' => $request->post
         ]);
         return redirect('/top');

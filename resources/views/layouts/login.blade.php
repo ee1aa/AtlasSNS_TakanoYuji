@@ -24,7 +24,7 @@
 <body>
     <header>
         <div id = "head">
-            <h1 class="logo"><a href="{{ route('/top') }}"><img src="images/atlas.png" alt="ロゴ" width="30%" height="30%"></a></h1>
+            <h1 class="logo"><a href="/top"><img src="images/atlas.png" alt="ロゴ" width="30%" height="30%"></a></h1>
             <div class="nav-open">
                 <p class="username">{{ Auth::user()->username }}　さん</p>
                 <nav class="accordion">
@@ -47,7 +47,7 @@
                 <nav class="g-navi">
                     <div class="container nav-wrapper">
                         <ul>
-                            <li class="nav-item active"><a class="nav-link" href="{{ route('/top') }}">HOME</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="/top">HOME</a></li>
                             <li class="nav-item"><a class="nav-link" href="/profile">プロフィール編集</a></li>
                             <li class="nav-item"><a class="nav-link" href="/login">ログアウト</a></li>
                         </ul>

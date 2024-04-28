@@ -42,7 +42,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::post('/top', 'PostsController@index');
     Route::get('/top', 'PostsController@index');
 
-    Route::post('/top', 'PostsController@postCreate');
+    Route::post('/postCreate', 'PostsController@postCreate');
 
     Route::post('/profile', 'UsersController@profile');
     Route::get('/profile', 'UsersController@profile')->name('profile');
@@ -60,8 +60,4 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
-    // Atlasロゴにトップページへ遷移するリンクを設置する
-    Route::get('/top', function () {
-    return view('posts.index');
-    })->name('/top');
 });

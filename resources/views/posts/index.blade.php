@@ -15,6 +15,7 @@
 <div class="index">
   @foreach ($posts as $post)
   <tr>
+    <!-- $as変数->テーブル->カラム or $controller定数->カラム -->
     <td>{{ $post->user->images }}</td>
     <td>{{ $post->user->username }}</td>
     <td>{{ $post->post }}</td>

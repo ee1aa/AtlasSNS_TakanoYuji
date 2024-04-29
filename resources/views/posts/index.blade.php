@@ -21,6 +21,7 @@
     <td>{{ $post->post }}</td>
     <td>{{ $post->created_at }}</td>
   </tr>
+  <br>
   @endforeach
 </div>
 @endsection

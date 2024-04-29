@@ -31,4 +31,23 @@ class PostsController extends Controller
         ]);
         return redirect('/top');
     }
+
+    //編集する投稿を送る
+    public function updateForm($id){
+        $book = Post::where('id', $id)->first();
+        return view('posts.updateForm', ['post'=>$post]);
+    }
+
+    public function update(Request $request){
+        // 1つ目の処理
+        $id = $request->input('id');
+        $up_post = $request->input('upPost');
+        // 2つ目の処理
+        Post::where('id', $id)->update([
+            'post' => $up_post,
+        ]);
+        // 3つ目の処理
+        return redirect('/top');
+    }
+
 }

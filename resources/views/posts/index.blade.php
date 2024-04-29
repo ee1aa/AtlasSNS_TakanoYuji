@@ -9,7 +9,7 @@
     <img src="{{ asset('images/icon1.png') }}">
     {!! Form::input('text', 'post', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容']) !!}
   </div>
-  <button type="submit" class="btn btn-success pull-right"><img src="images/post.png" alt="投稿" width="15%" height="15%"></button>
+  <button type="submit" class="post-btn btn-success pull-right"><img src="images/post.png" alt="投稿" width="25px" height="25px"></button>
   {!! Form::close() !!}
 </div>
 <div class="index">
@@ -20,8 +20,22 @@
     <td>{{ $post->user->username }}</td>
     <td>{{ $post->post }}</td>
     <td>{{ $post->created_at }}</td>
+    <td><a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="images/edit.png" alt="投稿" width="25px" height="25px"></a></td>
   </tr>
   <br>
   @endforeach
+  <!-- 編集モーダルの中身 -->
+    <div class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+        <div class="modal__content">
+           <form action="" method="">
+                <textarea name="" class="modal_post"></textarea>
+                <input type="hidden" name="" class="modal_id" value="">
+                <input type="submit" value="更新">
+                {{ csrf_field() }}
+           </form>
+           <a class="js-modal-close" href="">閉じる</a>
+        </div>
+    </div>
 </div>
 @endsection

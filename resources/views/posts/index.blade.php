@@ -15,7 +15,7 @@
 <div class="index">
   @foreach ($posts as $post)
   <tr>
-    <!-- $as変数->テーブル->カラム or $controller定数->カラム -->
+    <!-- $変数->テーブル->カラム or $controller定数->カラム -->
     <td>{{ $post->user->images }}</td>
     <td>{{ $post->user->username }}</td>
     <td>{{ $post->post }}</td>
@@ -25,17 +25,17 @@
   <br>
   @endforeach
   <!-- 編集モーダルの中身 -->
-    <div class="modal js-modal">
-        <div class="modal__bg js-modal-close"></div>
-        <div class="modal__content">
-           <form action="" method="">
-                <textarea name="" class="modal_post"></textarea>
-                <input type="hidden" name="" class="modal_id" value="">
-                <input type="submit" value="更新">
-                {{ csrf_field() }}
-           </form>
-           <a class="js-modal-close" href="">閉じる</a>
-        </div>
+  <div class="modal js-modal">
+    <div class="modal__bg js-modal-close"></div>
+    <div class="modal__content">
+      <form action="/post/update" method="post">
+        <textarea name="upPost" class="modal_post"></textarea>
+        <input type="hidden" name="id" class="modal_id" value="">
+        <input type="submit" value="更新">
+        {{ csrf_field() }}
+      </form>
+      <a class="js-modal-close" href="">閉じる</a>
     </div>
+  </div>
 </div>
 @endsection

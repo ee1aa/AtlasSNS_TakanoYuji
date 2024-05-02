@@ -38,7 +38,7 @@ class PostsController extends Controller
         return view('posts.updateForm', ['post'=>$post]);
     }
 
-    public function update(Request $request){
+    public function postUpdate(Request $request){
         // 1つ目の処理
         $id = $request->input('id');
         $up_post = $request->input('upPost');

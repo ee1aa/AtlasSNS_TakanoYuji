@@ -44,8 +44,8 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     Route::post('/postCreate', 'PostsController@postCreate');
 
-    //編集する投稿のidを受け取る
-    Route::get('/post/{id}/update-form', 'PostsController@updateForm');
+    //編集機能
+    Route::post('/post/update', 'PostsController@postUpdate');
 
     Route::post('/profile', 'UsersController@profile');
     Route::get('/profile', 'UsersController@profile')->name('profile');

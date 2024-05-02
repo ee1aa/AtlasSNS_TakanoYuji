@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    //
+    //投稿一覧
     public function index(){
         $posts = Post::latest()->get(); //投稿を最新のものから順に取得
         return view('posts.index',['posts'=>$posts]); //ビューへデータを送って表示
@@ -32,22 +32,23 @@ class PostsController extends Controller
         return redirect('/top');
     }
 
-    //編集する投稿を送る
-    public function updateForm($id){
-        $book = Post::where('id', $id)->first();
-        return view('posts.updateForm', ['post'=>$post]);
-    }
-
     public function postUpdate(Request $request){
-        // 1つ目の処理
+        // 投稿IDと編集内容を取得
         $id = $request->input('id');
         $up_post = $request->input('upPost');
-        // 2つ目の処理
+
+        // IDをもとに投稿を更新
+        //エラー処理も追記しておく
         Post::where('id', $id)->update([
             'post' => $up_post,
         ]);
-        // 3つ目の処理
-        return redirect('/top');
-    }
 
+        // 投稿一覧へ戻る
+        if($request){
+            return redirect('/top');
+        }
+        else{
+            return redirect()->back()->with('error', '投稿の更新に失敗しました。');
+        }
+    }
 }

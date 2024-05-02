@@ -20,7 +20,6 @@
 
 // LaravelのルーティングクラスであるRouteクラスを参照する
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostsController;
 
 //ログアウト中のページ　ログイン
 Route::get('/login', 'Auth\LoginController@login')->name('login');

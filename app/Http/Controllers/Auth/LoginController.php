@@ -54,8 +54,6 @@ class LoginController extends Controller
 
     public function logout(Request $request){
         Auth::logout(); // ユーザーをログアウトさせる
-        $request->session()->invalidate(); // セッションを無効にする
-        $request->session()->regenerateToken(); // 新しいセッショントークンを生成する
-        return redirect()->route('login'); // ログアウト後にリダイレクトする
+        return redirect()->route('auth.login'); // ログアウト後にリダイレクトする
     }
 }

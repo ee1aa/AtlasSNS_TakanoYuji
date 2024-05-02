@@ -20,7 +20,8 @@
     <td>{{ $post->user->username }}</td>
     <td>{{ $post->post }}</td>
     <td>{{ $post->created_at }}</td>
-    <td><a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="images/edit.png" alt="投稿" width="25px" height="25px"></a></td>
+    <td><a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="images/edit.png" alt="編集" width="25px" height="25px"></a></td>
+    <td><a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="images/trash.png" alt="削除" width="25px" height="25px"></a></td>
   </tr>
   <br>
   @endforeach

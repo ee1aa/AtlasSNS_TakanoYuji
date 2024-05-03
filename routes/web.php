@@ -34,17 +34,20 @@ Route::get('/added', 'Auth\RegisterController@added');
 Route::post('/added', 'Auth\RegisterController@added');
 
 //ログイン中のページ
-
 // ミドルウェアを使用して複数のルートに適用する
 Route::middleware(['web', 'auth'])->group(function () {
     // ここにauthミドルウェアが適用されるルートを定義する
     Route::post('/top', 'PostsController@index');
     Route::get('/top', 'PostsController@index');
 
+    //投稿機能
     Route::post('/postCreate', 'PostsController@postCreate');
 
     //編集機能
     Route::post('/post/update', 'PostsController@postUpdate');
+
+    //削除機能
+    Route::post('/post/delete', 'PostsController@postDelete');
 
     Route::post('/profile', 'UsersController@profile');
     Route::get('/profile', 'UsersController@profile')->name('profile');

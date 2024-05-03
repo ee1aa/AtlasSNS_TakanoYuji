@@ -21,7 +21,7 @@
     <td>{{ $post->post }}</td>
     <td>{{ $post->created_at }}</td>
     <td><a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="images/edit.png" alt="編集" width="25px" height="25px"></a></td>
-    <td><a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="images/trash.png" alt="削除" width="25px" height="25px"></a></td>
+    <td><a class="btn btn-danger" href="" post="{{ $post->post }}" post_id="{{ $post->id }}" onclick="confirmDelete('{{ $post->post }}')"><img src="images/trash.png" alt="削除" width="25px" height="25px"></a></td>
   </tr>
   <br>
   @endforeach
@@ -38,5 +38,17 @@
       <a class="js-modal-close" href="">閉じる</a>
     </div>
   </div>
+  <!-- 削除モーダルの中身 -->
+  <form id="delete-post-form" action="/post/delete" method="post">
+    @csrf
+    <input type="hidden" name="post_id" value="{{ $post->id }}">
+  </form>
+  <script>
+    function confirmDelete(post) {
+        if (confirm(`こちらの投稿を削除してもよろしいでしょうか？\n投稿内容：${post}`)) {
+            document.getElementById('delete-post-form').submit();
+        }
+    }
+  </script>
 </div>
 @endsection

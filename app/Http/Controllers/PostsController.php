@@ -32,6 +32,7 @@ class PostsController extends Controller
         return redirect('/top');
     }
 
+    //投稿内容の編集機能
     public function postUpdate(Request $request){
         // 投稿IDと編集内容を取得
         $id = $request->input('id');
@@ -49,6 +50,23 @@ class PostsController extends Controller
         }
         else{
             return redirect()->back()->with('error', '投稿の更新に失敗しました。');
+        }
+    }
+
+    //投稿内容の削除機能
+    public function postDelete(Request $request){
+        // 投稿IDを取得
+        $id = $request->input('post_id');
+
+        //投稿内容を削除
+        $deleted = Post::where('id', $id)->delete();
+
+        // 投稿一覧へ戻る
+        if($deleted){
+            return redirect('/top')->with('success', '投稿を削除しました。');
+        }
+        else{
+            return redirect()->back()->with('error', '投稿の削除に失敗しました。');
         }
     }
 }

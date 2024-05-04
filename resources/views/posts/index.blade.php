@@ -39,32 +39,9 @@
     </div>
   </div>
   <!-- 削除モーダルの中身 -->
-      <form id="delete-post-form" action="/post/delete" method="post">
-        @csrf
-        <input class="delete-id" type="hidden" name="post_id" value="">
-      </form>
-      <script>
-        function confirmDelete(post, id) {
-            if (confirm(`こちらの投稿を削除してもよろしいでしょうか？\n投稿内容：${post}`)) {
-                var delete = document.getElementById('delete-post-form');
-                delete.post_id.value = id;
-                delete.submit();
-            }
-        }
-      </script>
-
-
-<!--
   <form id="delete-post-form" action="/post/delete" method="post">
     @csrf
-    <input type="hidden" name="post_id" value="{{ $post->id }}">
+    <input class="delete-id" type="hidden" name="post_id" value="">
   </form>
-  <script>
-    function confirmDelete(post) {
-        if (confirm(`こちらの投稿を削除してもよろしいでしょうか？\n投稿内容：${post}`)) {
-            document.getElementById('delete-post-form').submit();
-        }
-    }
-  </script> -->
 </div>
 @endsection

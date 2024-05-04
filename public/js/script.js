@@ -41,17 +41,10 @@ $(function () {
 });
 
 //削除モーダル展開
-$(function () {
-  // 編集ボタン(class="delete-btn")が押されたら発火
-  $('.delete-btn').on('click', function () {
-    // 押されたボタンから投稿のidを取得し変数へ格納（どの投稿を編集するか特定するのに必要な為）
-    var post_id = $(this).attr('post_id');
-
-
-    // 取得した投稿のidをモーダルの中身へ渡す
-    $('.delete-id').val(post_id);
-    return false;
-  });
-
-
-});
+function confirmDelete(post, id) {
+  if (confirm(`こちらの投稿を削除してもよろしいでしょうか？\n投稿内容：${post}`)) {
+    var post-form = document.getElementById('delete-post-form');
+    delete -post - form.post_id.value = id;
+    delete -post - form.submit();
+  }
+}

@@ -43,8 +43,8 @@ $(function () {
 //削除モーダル展開
 function confirmDelete(post, id) {
   if (confirm(`こちらの投稿を削除してもよろしいでしょうか？\n投稿内容：${post}`)) {
-    var post-form = document.getElementById('delete-post-form');
-    delete -post - form.post_id.value = id;
-    delete -post - form.submit();
+    var postForm = document.getElementById('delete-post-form');
+    postForm.post_id.value = id;
+    postForm.submit();
   }
 }

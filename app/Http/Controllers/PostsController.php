@@ -57,6 +57,7 @@ class PostsController extends Controller
     public function postDelete(Request $request){
         // 投稿IDを取得
         $id = $request->input('post_id');
+        // dd($request, $id);
 
         //投稿内容を削除
         $deleted = Post::where('id', $id)->delete();

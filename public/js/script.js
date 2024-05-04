@@ -39,3 +39,19 @@ $(function () {
     return false;
   });
 });
+
+//削除モーダル展開
+$(function () {
+  // 編集ボタン(class="delete-btn")が押されたら発火
+  $('.delete-btn').on('click', function () {
+    // 押されたボタンから投稿のidを取得し変数へ格納（どの投稿を編集するか特定するのに必要な為）
+    var post_id = $(this).attr('post_id');
+
+
+    // 取得した投稿のidをモーダルの中身へ渡す
+    $('.delete-id').val(post_id);
+    return false;
+  });
+
+
+});

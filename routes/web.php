@@ -52,8 +52,12 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::post('/profile', 'UsersController@profile');
     Route::get('/profile', 'UsersController@profile')->name('profile');
 
+    //検索ページ
     Route::post('/search', 'UsersController@search');
     Route::get('/search', 'UsersController@search');
+
+    //検索機能
+    Route::post('/search', 'UsersController@userSearch');
 
     Route::get('/show', 'FollowsController@show');
 

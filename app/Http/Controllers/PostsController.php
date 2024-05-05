@@ -12,7 +12,7 @@ class PostsController extends Controller
     //投稿一覧
     public function index(){
         $posts = Post::latest()->get(); //投稿を最新のものから順に取得
-        return view('posts.index',['posts'=>$posts]); //ビューへデータを送って表示
+        return view('posts.index', ['posts'=>$posts]); //ビューへデータを送って表示
     }
 
     //投稿機能

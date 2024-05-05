@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use app\User;
 
 class UsersController extends Controller
 {
@@ -16,7 +16,8 @@ class UsersController extends Controller
 
     //検索ページ
     public function search(){
-        return view('users.search');
+        $users = User::latest()->get();
+        return view('users.search', ['users'=>$users]);
     }
 
     //ユーザー検索機能

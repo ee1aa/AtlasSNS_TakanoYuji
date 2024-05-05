@@ -19,6 +19,8 @@
   <tr>
     <td>{{ $user->images }}</td>
     <td>{{ $user->username }}</td>
+    <td><button>フォローする</button></td>
+    <td><button>フォロー解除</button></td>
   </tr>
   <br>
   @endif

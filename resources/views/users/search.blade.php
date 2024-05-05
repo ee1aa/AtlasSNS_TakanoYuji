@@ -7,6 +7,11 @@
     <input type="text" name="keyword" class="form" placeholder="検索">
     <button type="submit" class="btn btn-success"><img src="images/search.png" alt="検索" width="25px" height="25px"></button>
   </form>
+  <div class="search-keyword">
+    @if(!empty($keyword))
+    <p>検索ワード：{{ $keyword }}</p>
+    @endif
+  </div>
 </div>
 <div class="user-list">
   @foreach ($users as $user)

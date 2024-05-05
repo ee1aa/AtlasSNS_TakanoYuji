@@ -24,14 +24,17 @@ class UsersController extends Controller
     public function userSearch(Request $request){
         //検索したワードを取得
         $keyword = $request->input('keyword');
-        //空欄でないなら自分以外のあいまい検索、空欄なら自分以外のユーザーを全て表示
+        //空欄でないなら自分以外のあいまい検索、空欄なら自分以外のユーザーを全て表示する処理
         if(!empty($keyword)){
             $users = User::where('username','like', '%'.$keyword.'%')->get();
         } else {
             $users = User::all();
         }
         //検索ページに戻る
-        return view('users.search', ['users'=>$users]);
+        return view('users.search', [
+            'users' => $users, //検索結果を取得した変数
+            'keyword' => $keyword //検索語句をビューに渡す
+        ]);
     }
 
     //フォロー機能

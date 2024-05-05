@@ -116,3 +116,7 @@ header {
     transform: translate(-50%, -50%);
     width: 60%;
 }
+
+.search-container {
+    display: flex;
+}

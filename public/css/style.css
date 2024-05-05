@@ -120,3 +120,15 @@ header {
 .search-container {
     display: flex;
 }
+
+.btn-danger {
+    background-image: url(images\trash.png);
+    width: 25px;
+    height: 25px;
+}
+
+.btn-danger:hover {
+    background-image: url(images\trash-h.png);
+    width: 25px;
+    height: 25px;
+}

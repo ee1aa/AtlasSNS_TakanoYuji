@@ -42,7 +42,7 @@ class UsersController extends Controller
     {
         $user = Auth::user();
         $follower = auth()->user(); //フォローしているか確認
-        $is_following = $follower->isFollowing($user-id); //isFollowing:ユーザーが特定のユーザーをフォロー中か返す
+        $is_following = $follower->isFollowing($user->id); //isFollowing:ユーザーが特定のユーザーをフォロー中か返す
         if (!is_following) { //もしフォローしていなければ
             $$follower->follow($user-id); //フォローする
         }
@@ -55,7 +55,7 @@ class UsersController extends Controller
         $user = Auth::user();
         $follower = auth()->user(); //フォローしているか確認
         $is_following = $follower->isFollowing($user-id); //isFollowing:ユーザーが特定のユーザーをフォロー中か返す
-        if (!is_following) { //もしフォローしていれば
+        if (is_following) { //もしフォローしていれば
             $$follower->unfollow($user-id); //フォローする
         }
         return back();

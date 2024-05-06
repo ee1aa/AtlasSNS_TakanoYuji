@@ -19,8 +19,21 @@
   <tr>
     <td>{{ $user->images }}</td>
     <td>{{ $user->username }}</td>
-    <td><button>フォローする</button></td>
-    <td><button>フォロー解除</button></td>
+    <td>
+      @if ($user->is_followed)
+        <form action="/follow.unfollow" method="post">
+          @csrf
+          <input type="hidden" name="user_id" value="{{ $user->id }}">
+          <button type="submit" class="btn btn-primary">フォロー解除</button>
+        </form>
+      @else
+        <form action="/follow.follow" method="post">
+          @csrf
+          <input type="hidden" name="user_id" value="{{ $user->id }}">
+          <button type="submit" class="btn btn-primary">フォローする</button>
+        </form>
+      @endif
+    </td>
   </tr>
   <br>
   @endif

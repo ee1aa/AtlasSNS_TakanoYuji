@@ -59,6 +59,12 @@ Route::middleware(['web', 'auth'])->group(function () {
     //検索機能
     Route::post('/search', 'UsersController@userSearch');
 
+    //フォロー解除
+    Route::post('/follow.unfollow', 'UsersController@unfollow');
+
+    //フォロー機能
+    Route::post('/follow.follow', 'UsersController@follow');
+
     Route::get('/show', 'FollowsController@show');
 
     Route::post('/follow-list', 'FollowsController@followList');

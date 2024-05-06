@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function follow($user_id) //フォローする
+    public function follows($user_id) //フォローする
     {
         return $this->follows()->attach($user_id);
     }

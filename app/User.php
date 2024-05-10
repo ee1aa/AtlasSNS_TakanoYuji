@@ -28,14 +28,14 @@ class User extends Authenticatable
     ];
 
     //フォローユーザーとのリレーション定義
-    public function followings(){
+    public function isFollowing(){
         //多対多 belongsToManyを使用
-        return $this->belongsToMany('App\User', 'follows', 'follower_id', 'followed_id')->withTimestamps();
+        return $this->belongsToMany('App\User', 'follows', 'following_id', 'followed_id')->withTimestamps();
     }
 
     //フォロワーユーザーとのリレーション定義
-    public function followers(){
-    return $this->belongsToMany('App\User', 'follows', 'followed_id', 'follower_id')->withTimestamps();
+    public function follow(){
+    return $this->belongsToMany('App\User', 'follows', 'following_id', 'followed_id')->withTimestamps();
     }
 
     //投稿とのリレーション定義

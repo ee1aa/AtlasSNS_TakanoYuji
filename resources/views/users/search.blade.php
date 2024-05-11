@@ -20,7 +20,7 @@
     <td>{{ $user->images }}</td>
     <td>{{ $user->username }}</td>
     <td>
-      @if ($user->is_followed)
+      @if (Auth::user()->followCheck($user->id))
         <form action="/follow.unfollow" method="post">
           @csrf
           <input type="hidden" name="user_id" value="{{ $user->id }}">

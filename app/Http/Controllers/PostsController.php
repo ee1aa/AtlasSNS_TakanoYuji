@@ -22,7 +22,7 @@ class PostsController extends Controller
             'post' => ['required', 'string', 'min:1', 'max:150']
         ]);
 
-        //投稿の登録処理
+        //投稿の登録処理（テーブルに登録する）
         //Postテーブルの'user_id', 'post'に変数を当てはめる
         Post::create([
             'user_id' => Auth::user()->id,
@@ -59,7 +59,7 @@ class PostsController extends Controller
         $id = $request->input('post_id');
         // dd($request, $id);
 
-        //投稿内容を削除
+        //投稿内容をテーブルから削除
         $deleted = Post::where('id', $id)->delete();
 
         // 投稿一覧へ戻る

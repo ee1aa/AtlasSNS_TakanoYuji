@@ -21,7 +21,7 @@
     <td>{{ $post->post }}</td>
     <td>{{ $post->created_at }}</td>
     <td><a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="images/edit.png" alt="編集" width="25px" height="25px"></a></td>
-    <td><a class="btn btn-danger delete-btn" href="#" data-post="{{ $post->post }}" data-post_id="{{ $post->id }}" onclick="event.preventDefault(); confirmDelete('{{ $post->post }}', '{{ $post->id }}')"><img src="images/trash.png" alt="削除" width="25px" height="25px"></a></td>
+    <td><button class="btn btn-danger delete-button" action="/post/delete" data-post="{{ $post->post }}" data-post_id="{{ $post->id }}" onclick="event.preventDefault(); confirmDelete('{{ $post->post }}', '{{ $post->id }}')"></button></td>
   </tr>
   <br>
   @endforeach

@@ -121,14 +121,15 @@ header {
     display: flex;
 }
 
-.btn-danger {
-    background-image: url(images\trash.png);
+.delete-button {
     width: 25px;
     height: 25px;
+    background-image: url(../images/trash.png);
+    background-size: cover;
+    border: none;
+    cursor: pointer;
 }
 
-.btn-danger:hover {
-    background-image: url(images\trash-h.png);
-    width: 25px;
-    height: 25px;
+.delete-button:hover {
+    background-image: url(../images/trash-h.png);
 }

@@ -27,6 +27,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    //
+    public function followCheck($user){
+        return $this->isFollowing()->where('followed_id', $user)->exists(); //isFollowingメソッド使用してフォローしているかチェックする
+    }
+
     //フォローユーザーとのリレーション定義
     public function isFollowing(){
         //多対多 belongsToManyを使用
@@ -35,7 +40,7 @@ class User extends Authenticatable
 
     //フォロワーユーザーとのリレーション定義
     public function follow(){
-    return $this->belongsToMany('App\User', 'follows', 'following_id', 'followed_id')->withTimestamps();
+    return $this->belongsToMany('App\User', 'follows', 'followed_id', 'following_id')->withTimestamps();
     }
 
     //投稿とのリレーション定義

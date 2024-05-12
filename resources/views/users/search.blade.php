@@ -19,6 +19,7 @@
   <tr>
     <td>{{ $user->images }}</td>
     <td>{{ $user->username }}</td>
+    <td>{{ $user->id }}</td>
     <td>
       @if (Auth::user()->followCheck($user->id))
         <form action="/follow.unfollow" method="post">

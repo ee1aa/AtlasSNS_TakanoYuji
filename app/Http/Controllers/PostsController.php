@@ -26,7 +26,6 @@ class PostsController extends Controller
         //Postテーブルの'user_id', 'post'に変数を当てはめる
         Post::create([
             'user_id' => Auth::user()->id,
-            'name' => Auth::user()->name,
             'post' => $request->post
         ]);
         return redirect('/top');

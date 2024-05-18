@@ -38,9 +38,19 @@ class User extends Authenticatable
         return $this->belongsToMany('App\User', 'follows', 'following_id', 'followed_id')->withTimestamps();
     }
 
+    //フォロー数を取得する
+    public function getFollowCountAttribute(){
+         return $this->isFollowing()->count();
+    }
+
     //フォロワーユーザーとのリレーション定義
     public function follow(){
     return $this->belongsToMany('App\User', 'follows', 'followed_id', 'following_id')->withTimestamps();
+    }
+
+    //フォロワー数を取得する
+    public function getFollowerCountAttribute(){
+         return $this->follow()->count();
     }
 
     //投稿とのリレーション定義

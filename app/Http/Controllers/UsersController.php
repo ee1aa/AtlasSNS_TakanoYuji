@@ -43,7 +43,7 @@ class UsersController extends Controller
     {
         $user_name = $request->input('user_id');
         $follower = auth()->user(); //フォローしているか確認
-        $is_following = $follower->isFollowing()->where('followed_id', $user_name)->exists(); //isFollowing:ユーザーが特定のユーザーをフォロー中か返す
+        $is_following = $follower->followings()->where('followed_id', $user_name)->exists(); //followings:ユーザーが特定のユーザーをフォロー中か返す
         if (!$is_following) { //もしフォローしていなければ
             $follower->follow($user_name); //フォローする
         }
@@ -63,7 +63,7 @@ class UsersController extends Controller
     {
         $user_name = $request->input('user_id');
         $follower = auth()->user(); //フォローしているか確認
-        $is_following = $follower->isFollowing()->where('followed_id', $user_name)->exists(); //isFollowing:ユーザーが特定のユーザーをフォロー中か返す
+        $is_following = $follower->followings()->where('followed_id', $user_name)->exists(); //followings:ユーザーが特定のユーザーをフォロー中か返す
         if ($is_following) { //もしフォローしていれば
             $follower->follow($user_name); //フォロー解除する
         }
@@ -73,4 +73,14 @@ class UsersController extends Controller
 
         return back();
     }
+
+    public function followList(){
+        // ログインユーザーがフォローしているユーザーを取得
+        $followings = Auth::user()->followings()->get();
+        // dd($followings);
+
+        // ビューにデータを渡す
+        return view('follows.followList', compact('followings'));
+}
+
 }

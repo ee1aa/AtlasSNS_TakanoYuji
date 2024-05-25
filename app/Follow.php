@@ -12,7 +12,7 @@ class Follow extends Model
     ];
 
     //フォローユーザーとのリレーション定義
-    public function isFollowing(){
+    public function followings(){
         //多対多 belongsToManyを使用
         return $this->belongsToMany('App\User', 'follows', 'following_id', 'followed_id')->withTimestamps();
     }

@@ -67,12 +67,14 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     Route::get('/show', 'FollowsController@show');
 
-    Route::post('/follow-list', 'FollowsController@followList');
-    Route::get('/follow-list', 'FollowsController@followList');
+    Route::get('');
+
+    Route::post('/follow-list', 'UsersController@followList');
+    Route::get('/follow-list', 'UsersController@followList');
 
     Route::post('/follower-list', 'FollowsController@followerList');
     Route::get('/follower-list', 'FollowsController@followerList');
 
-    Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+    Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 });

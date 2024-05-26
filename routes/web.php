@@ -35,49 +35,27 @@ Route::post('/added', 'Auth\RegisterController@added');
 
 //ログイン中のページ
 // ミドルウェアを使用して複数のルートに適用する
+//ログイン中のページ
 Route::middleware(['web', 'auth'])->group(function () {
-    // ここにauthミドルウェアが適用されるルートを定義する
-    Route::post('/top', 'PostsController@index');
-    Route::get('/top', 'PostsController@index');
+    Route::get('/top', 'PostsController@index')->name('top'); // ホームページ
 
-    //投稿機能
-    Route::post('/postCreate', 'PostsController@postCreate');
+    Route::post('/postCreate', 'PostsController@postCreate')->name('post.create'); // 投稿機能
+    Route::post('/post/update', 'PostsController@postUpdate')->name('post.update'); // 編集機能
+    Route::post('/post/delete', 'PostsController@postDelete')->name('post.delete'); // 削除機能
 
-    //編集機能
-    Route::post('/post/update', 'PostsController@postUpdate');
+    Route::post('/profile', 'UsersController@profile')->name('profile.update'); // プロフィール更新
+    Route::get('/profile', 'UsersController@profile')->name('profile.view'); // プロフィール表示
 
-    //削除機能
-    Route::post('/post/delete', 'PostsController@postDelete');
+    Route::post('/search', 'UsersController@search')->name('search'); // ユーザー検索
 
-    Route::post('/profile', 'UsersController@profile');
-    Route::get('/profile', 'UsersController@profile')->name('profile');
+    Route::post('/follow.unfollow', 'UsersController@unfollow')->name('follow.unfollow'); // フォロー解除
+    Route::post('/follow.follow', 'UsersController@follow')->name('follow.follow'); // フォロー機能
 
-    //検索ページ
-    Route::post('/search', 'UsersController@search');
-    Route::get('/search', 'UsersController@search');
-
-    //検索機能
-    Route::post('/search', 'UsersController@userSearch');
-
-    //フォロー解除
-    Route::post('/follow.unfollow', 'UsersController@unfollow');
-
-    //フォロー機能
-    Route::post('/follow.follow', 'UsersController@follow');
-
-    Route::get('/show', 'FollowsController@show');
-
-
-    //フォローしているユーザーの投稿を表示
-    Route::get('/follow-list', 'PostsController@followList')->name('follow.list');
-
-    //フォローしているユーザーのアイコンを一覧表示
+    Route::get('/follow-list', 'PostsController@followList')->name('follow.list'); // フォローしているユーザーの投稿を表示
     Route::post('/follow-list', 'UsersController@followList');
-    Route::get('/follow-list', 'UsersController@followList');
 
+    Route::get('/follower-list', 'FollowsController@followerList')->name('follower.list'); // フォロワーユーザーのリスト表示
     Route::post('/follower-list', 'FollowsController@followerList');
-    Route::get('/follower-list', 'FollowsController@followerList');
 
-    Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-
+    Route::get('logout', 'Auth\LoginController@logout')->name('logout'); // ログアウト
 });

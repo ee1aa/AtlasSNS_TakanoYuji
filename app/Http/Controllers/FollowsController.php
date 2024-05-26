@@ -12,9 +12,9 @@ use APP\Follow; //Follow.phpを使用
 class FollowsController extends Controller
 {
     //フォローリスト
-    public function followList(){
-        return view('follows.followList');
-    }
+    // public function followList(){
+    //     return view('follows.followList');
+    // }
 
     //フォロワーリスト
     public function followerList(){

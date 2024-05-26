@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\User;
-use Illuminate\support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -68,5 +68,20 @@ class PostsController extends Controller
         else{
             return redirect()->back()->with('error', '投稿の削除に失敗しました。');
         }
+    }
+
+    public function followList(){
+        // ログインユーザーがフォローしているユーザーのIDを取得
+        $following_ids = Auth::user()->followings()->pluck('followed_id')->toArray();
+
+        // フォローしているユーザーの投稿を取得
+        $posts = Post::with('user')->whereIn('user_id', $following_ids)->latest()->get();
+
+        // フォローしているユーザーを取得
+        $followings = Auth::user()->followings()->get();
+
+        // dd($posts, $following_ids, $followings);
+
+        return view('follows.followList', ['posts' => $posts, 'followings' => $followings]);
     }
 }

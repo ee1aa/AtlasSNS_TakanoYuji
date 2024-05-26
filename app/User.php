@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -27,9 +28,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    //
+    //followingsメソッド使用してフォローしているかチェックする
     public function followCheck($user){
-        return $this->followings()->where('followed_id', $user)->exists(); //followingsメソッド使用してフォローしているかチェックする
+        return $this->followings()->where('followed_id', $user)->exists();
     }
 
     //フォローユーザーとのリレーション定義

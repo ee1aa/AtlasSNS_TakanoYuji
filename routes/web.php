@@ -67,8 +67,11 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     Route::get('/show', 'FollowsController@show');
 
-    Route::get('');
 
+    //フォローしているユーザーの投稿を表示
+    Route::get('/follow-list', 'PostsController@followList')->name('follow.list');
+
+    //フォローしているユーザーのアイコンを一覧表示
     Route::post('/follow-list', 'UsersController@followList');
     Route::get('/follow-list', 'UsersController@followList');
 

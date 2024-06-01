@@ -9,10 +9,10 @@
     <!-- フォローしているユーザーのアイコンを表示 -->
     @if(isset($followings) && count($followings) > 0)
       @foreach ($followings as $following)
-        <div class="col-md-2 mb-3">
-          <div class="card">
-            <img src="{{ asset('images/' . $following->images) }}" class="card-img-top" alt="{{ $following->username }}">
-          </div>
+        <div class="user">
+          <a href="{{ route('profile.show', ['user' => $following->id]) }}">
+            <img src="{{ asset('storage/images/' . $following->images) }}" alt="ユーザーアイコン" width="20" height="20">
+          </a>
         </div>
       @endforeach
     @else

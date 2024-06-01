@@ -2,19 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Auth;
-use app\User;
-use App\Follow;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
 {
-    //
-    public function profile(){
-        return view('users.profile');
-    }
-
     //検索ページ
     public function search(){
         $users = User::latest()->get();
@@ -81,6 +76,57 @@ class UsersController extends Controller
 
         // ビューにデータを渡す
         return view('follows.followList', compact('followings'));
-}
+    }
+
+    // プロフィール編集画面の表示
+    public function editProfile()
+    {
+        $user = Auth::user();
+        return view('users.editProfile', compact('user'));
+    }
+
+    // プロフィール更新処理
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user();
+
+        // バリデーション
+        $request->validate([
+            'username' => 'required|string|min:2|max:12',
+            'mail' => 'required|string|email|min:5|max:40|unique:users,mail,' . $user->id,
+            'password' => 'nullable|string|min:8|max:20|confirmed',
+            'bio' => 'nullable|string|max:150',
+            'images' => 'nullable|image|mimes:png,jpg,bmp,gif,svg|max:2048',
+        ]);
+
+        // プロフィール情報の更新
+        $user->username = $request->username;
+        $user->mail = $request->mail;
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+        $user->bio = $request->bio;
+
+        if ($request->hasFile('images')) {
+            // 古い画像を削除する
+            if ($user->images && $user->images !== 'default.png') {
+                Storage::delete('public/images/' . $user->images);
+            }
+
+            // 新しい画像を保存する
+            $imageName = time() . '.' . $request->images->extension();
+            $request->images->storeAs('public/images', $imageName);
+            $user->images = $imageName;
+        }
+
+        $user->save();
+
+        return redirect('/top')->with('success', 'プロフィールを更新しました。');
+    }
+
+    public function profile(User $user)
+    {
+        return view('users.profile', compact('user'));
+    }
 
 }

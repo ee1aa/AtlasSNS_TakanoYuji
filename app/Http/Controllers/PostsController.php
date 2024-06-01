@@ -45,7 +45,7 @@ class PostsController extends Controller
 
         // 投稿一覧へ戻る
         if($request){
-            return redirect('/top');
+            return redirect('/top')->with('success', '投稿を更新しました。');;
         }
         else{
             return redirect()->back()->with('error', '投稿の更新に失敗しました。');

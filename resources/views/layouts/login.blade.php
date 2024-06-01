@@ -33,7 +33,11 @@
                     </div>
                 </nav>
                 <div class="icon">
-                    <img src="{{ asset('images/icon1.png') }}">
+                    @if(Auth::user()->images)
+                        <img src="{{ asset('storage/images/' . Auth::user()->images) }}" alt="ユーザーアイコン">
+                    @else
+                        <img src="{{ asset('icon1.png') }}" alt="デフォルトアイコン">
+                    @endif
                 </div>
             </div>
         </div>
@@ -48,7 +52,7 @@
                     <div class="container nav-wrapper">
                         <ul>
                             <li class="nav-item active"><a class="nav-link" href="/top">HOME</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/profile">プロフィール編集</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('profile.edit') }}">プロフィール編集</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">ログアウト</a></li>
                         </ul>
                     </div>

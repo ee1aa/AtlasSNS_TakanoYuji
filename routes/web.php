@@ -21,41 +21,66 @@
 // LaravelのルーティングクラスであるRouteクラスを参照する
 use Illuminate\Support\Facades\Route;
 
-//ログアウト中のページ　ログイン
-Route::get('/login', 'Auth\LoginController@login')->name('login');
+// ログアウト中のページ
+
+// ログイン
+// ログインフォーム表示
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+// ログイン処理
 Route::post('/login', 'Auth\LoginController@login');
 
-//ログアウト中のページ　ユーザー登録
-Route::get('/register', 'Auth\RegisterController@registerView');
-Route::post('/registerCreate', 'Auth\RegisterController@register');
+// ユーザー登録
+// ユーザー登録フォーム表示
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+// ユーザー登録処理
+Route::post('/register', 'Auth\RegisterController@register');
 
-//ログアウト中のページ　登録完了
-Route::get('/added', 'Auth\RegisterController@added');
-Route::post('/added', 'Auth\RegisterController@added');
+// 登録完了
+// 登録完了ページ表示
+Route::get('/added', 'Auth\RegisterController@added')->name('added');
+
 
 //ログイン中のページ
 // ミドルウェアを使用して複数のルートに適用する
 //ログイン中のページ
 Route::middleware(['web', 'auth'])->group(function () {
-    Route::get('/top', 'PostsController@index')->name('top'); // ホームページ
+    // ホームページ
+    Route::get('/top', 'PostsController@index')->name('top');
 
-    Route::post('/postCreate', 'PostsController@postCreate')->name('post.create'); // 投稿機能
-    Route::post('/post/update', 'PostsController@postUpdate')->name('post.update'); // 編集機能
-    Route::post('/post/delete', 'PostsController@postDelete')->name('post.delete'); // 削除機能
+    // 投稿機能
+    Route::post('/postCreate', 'PostsController@postCreate')->name('post.create');
 
-    Route::post('/profile', 'UsersController@profile')->name('profile.update'); // プロフィール更新
-    Route::get('/profile', 'UsersController@profile')->name('profile.view'); // プロフィール表示
+    // 編集機能
+    Route::post('/post/update', 'PostsController@postUpdate')->name('post.update');
 
-    Route::post('/search', 'UsersController@search')->name('search'); // ユーザー検索
+    // 削除機能
+    Route::post('/post/delete', 'PostsController@postDelete')->name('post.delete');
 
-    Route::post('/follow.unfollow', 'UsersController@unfollow')->name('follow.unfollow'); // フォロー解除
-    Route::post('/follow.follow', 'UsersController@follow')->name('follow.follow'); // フォロー機能
+    // プロフィール編集ページ
+    Route::get('/profile/edit', 'UsersController@editProfile')->name('profile.edit');
+    Route::post('/profile/update', 'UsersController@updateProfile')->name('profile.update');
 
-    Route::get('/follow-list', 'PostsController@followList')->name('follow.list'); // フォローしているユーザーの投稿を表示
+    // ユーザー検索
+    Route::post('/search', 'UsersController@search')->name('search');
+    Route::get('/search', 'UsersController@search')->name('search');
+
+    // フォロー解除
+    Route::post('/follow.unfollow', 'UsersController@unfollow')->name('follow.unfollow');
+
+    // フォロー機能
+    Route::post('/follow.follow', 'UsersController@follow')->name('follow.follow');
+
+    // フォローしているユーザーの投稿を表示
+    Route::get('/follow-list', 'PostsController@followList')->name('follow.list');
     Route::post('/follow-list', 'UsersController@followList');
 
-    Route::get('/follower-list', 'FollowsController@followerList')->name('follower.list'); // フォロワーユーザーのリスト表示
+    //アイコンをクリックしてそのユーザのプロフィールへ飛ぶルート
+    Route::get('/profile/{user}', 'UsersController@profile')->name('profile.show');
+
+    // フォロワーユーザーのリスト表示
+    Route::get('/follower-list', 'FollowsController@followerList')->name('follower.list');
     Route::post('/follower-list', 'FollowsController@followerList');
 
-    Route::get('logout', 'Auth\LoginController@logout')->name('logout'); // ログアウト
+    // ログアウト
+    Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 });

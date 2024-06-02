@@ -1,5 +1,3 @@
-<!-- resources/views/follows/followList.blade.php -->
-
 @extends('layouts.login')
 
 @section('content')
@@ -29,7 +27,9 @@
             <div class="card">
               <div class="card-body">
                 <div class="d-flex align-items-center mb-3">
-                  <img src="{{ asset('images/' . $post->user->images) }}" class="rounded-circle mr-3" alt="{{ $post->user->username }}" width="50" height="50">
+                  <a href="{{ route('profile.show', ['user' => $following->id]) }}">
+                    <img src="{{ asset('storage/images/' . $following->images) }}" alt="ユーザーアイコン" width="20" height="20">
+                  </a>
                   <h5 class="card-title mb-0">{{ $post->user->username }}</h5>
                 </div>
                 <p class="card-text">{{ $post->post }}</p>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Post;
+use App\Follow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -124,9 +126,17 @@ class UsersController extends Controller
         return redirect('/top')->with('success', 'プロフィールを更新しました。');
     }
 
+    //プロフィールページ
     public function profile(User $user)
     {
         return view('users.profile', compact('user'));
+    }
+
+    //ユーザーの投稿を取得
+    public function showProfile(User $user){
+        $posts = $user->posts()->latest()->get();
+
+        return view('users.profile', compact('user', 'posts'));
     }
 
 }

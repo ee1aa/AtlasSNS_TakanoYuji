@@ -77,6 +77,9 @@ Route::middleware(['web', 'auth'])->group(function () {
     //アイコンをクリックしてそのユーザのプロフィールへ飛ぶルート
     Route::get('/profile/{user}', 'UsersController@profile')->name('profile.show');
 
+    //プロフィールページで投稿を表示する
+    Route::get('/profile/{user}', 'UsersController@showProfile')->name('profile.show');
+
     // フォロワーユーザーのリスト表示
     Route::get('/follower-list', 'FollowsController@followerList')->name('follower.list');
     Route::post('/follower-list', 'FollowsController@followerList');

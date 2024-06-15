@@ -84,4 +84,19 @@ class PostsController extends Controller
 
         return view('follows.followList', ['posts' => $posts, 'followings' => $followings]);
     }
+
+    public function followerList(){
+        // ログインユーザーがフォローされているユーザーのIDを取得
+        $follower_ids = Auth::user()->follow()->pluck('following_id')->toArray();
+
+        // フォローしているユーザーの投稿を取得
+        $posts = Post::with('user')->whereIn('user_id', $follower_ids)->latest()->get();
+
+        // フォローしているユーザーを取得
+        $followers = Auth::user()->follow()->get();
+
+        // dd($posts, $following_ids, $followings);
+
+        return view('follows.followerList', ['posts' => $posts, 'followers' => $followers]);
+    }
 }

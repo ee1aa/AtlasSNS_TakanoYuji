@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -53,17 +54,19 @@ class RegisterController extends Controller
             $password = $request->input('password');
 
             //postの処理 送信後に各データを格納する
-            User::create([
-                'username' => $username,
-                'mail' => $mail,
-                'password' => bcrypt($password),
-            ]);
+            DB::transaction(function () use ($username, $mail, $password) {
+                User::create([
+                    'username' => $username,
+                    'mail' => $mail,
+                    'password' => bcrypt($password),
+                ]);
+            });
 
             //セッションへデータを保存する
-            $request->session()->put('username');
+            $request->session()->put('username', $username);
 
             //セッションを使用してユーザー名を表示させる
-            return redirect('added')->with('username', $username);
+            return redirect('registerCreate')->with('username', $username);
         }
 
         return view('auth.register');

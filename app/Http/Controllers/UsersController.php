@@ -74,10 +74,17 @@ class UsersController extends Controller
     public function followList(){
         // ログインユーザーがフォローしているユーザーを取得
         $followings = Auth::user()->followings()->get();
-        // dd($followings);
 
         // ビューにデータを渡す
         return view('follows.followList', compact('followings'));
+    }
+
+    public function followerList(){
+        // ログインユーザーがフォローされているユーザーを取得
+        $followers = Auth::user()->followers()->get();
+
+        // ビューにデータを渡す
+        return view('follows.followerList', compact('followers'));
     }
 
     // プロフィール編集画面の表示

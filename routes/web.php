@@ -31,13 +31,13 @@ Route::post('/login', 'Auth\LoginController@login');
 
 // ユーザー登録
 // ユーザー登録フォーム表示
-Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::get('/register', 'Auth\RegisterController@registerView')->name('register');
 // ユーザー登録処理
 Route::post('/register', 'Auth\RegisterController@register');
 
 // 登録完了
 // 登録完了ページ表示
-Route::get('/added', 'Auth\RegisterController@added')->name('added');
+Route::post('/registerCreate', 'Auth\RegisterController@added')->name('registerCreate');
 
 
 //ログイン中のページ
@@ -70,7 +70,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     // フォロー機能
     Route::post('/follow.follow', 'UsersController@follow')->name('follow.follow');
 
-    // フォローしているユーザーの投稿を表示
+    // フォローリスト
     Route::get('/follow-list', 'PostsController@followList')->name('follow.list');
     Route::post('/follow-list', 'UsersController@followList');
 
@@ -80,9 +80,9 @@ Route::middleware(['web', 'auth'])->group(function () {
     //プロフィールページで投稿を表示する
     Route::get('/profile/{user}', 'UsersController@showProfile')->name('profile.show');
 
-    // フォロワーユーザーのリスト表示
-    Route::get('/follower-list', 'FollowsController@followerList')->name('follower.list');
-    Route::post('/follower-list', 'FollowsController@followerList');
+    // フォロワーリスト
+    Route::get('/follower-list', 'PostsController@followerList')->name('follower.list');
+    Route::post('/follower-list', 'UsersController@followerList');
 
     // ログアウト
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');

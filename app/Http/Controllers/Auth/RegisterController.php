@@ -44,8 +44,7 @@ class RegisterController extends Controller
     }
 
     //ユーザー新規登録処理　=post処理
-    public function register(RegisterFormRequest $request)
-    {
+    public function register(RegisterFormRequest $request){
         if($request->isMethod('post')){
 
             //postの処理 入力した値を取得する

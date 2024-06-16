@@ -37,7 +37,7 @@ Route::post('/register', 'Auth\RegisterController@register');
 
 // 登録完了
 // 登録完了ページ表示
-Route::post('/registerCreate', 'Auth\RegisterController@added')->name('registerCreate');
+Route::get('/registerCreate', 'Auth\RegisterController@added')->name('registerCreate');
 
 
 //ログイン中のページ

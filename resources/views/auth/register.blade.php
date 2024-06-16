@@ -14,6 +14,7 @@
 @endif
 
 <!-- 適切なURLを入力してください -->
+<!-- postで送ってpostで受け取る -->
 {!! Form::open(['url' => '/register', 'method' => 'post']) !!}
 {{ csrf_field() }}
 <h2>新規ユーザー登録</h2>

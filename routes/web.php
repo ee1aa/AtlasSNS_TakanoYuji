@@ -60,9 +60,13 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('/profile/edit', 'UsersController@editProfile')->name('profile.edit');
     Route::post('/profile/update', 'UsersController@updateProfile')->name('profile.update');
 
-    // ユーザー検索
+    // ユーザー検索ページ
     Route::post('/search', 'UsersController@search')->name('search');
     Route::get('/search', 'UsersController@search')->name('search');
+
+    // ユーザー検索機能
+    Route::get('/search', 'UsersController@userSearch')->name('user.search');
+    Route::post('/search', 'UsersController@userSearch');
 
     // フォロー解除
     Route::post('/follow.unfollow', 'UsersController@unfollow')->name('follow.unfollow');

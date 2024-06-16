@@ -24,7 +24,7 @@
 <body>
     <header>
         <div id = "head">
-            <h1 class="logo"><a href="/top"><img src="images/atlas.png" alt="ロゴ" width="30%" height="30%"></a></h1>
+            <h1 class="logo"><a href="/top"><img src="{{ asset('images/atlas.png') }}" alt="ロゴ" width="30%" height="30%"></a></h1>
             <div class="nav-open">
                 <p class="username">{{ Auth::user()->username }}　さん</p>
                 <nav class="accordion">
@@ -62,12 +62,12 @@
                     <p>フォロー数</p>
                     <p>{{ Auth::user()->follow_count }}名</p>
                 </div>
-                <p class="btn"><a href="follow-list">フォローリスト</a></p>
+                <p class="btn"><a href="{{ route('follow.list') }}">フォローリスト</a></p>
                 <div>
                     <p>フォロワー数</p>
                     <p>{{ Auth::user()->follower_count }}名</p>
                 </div>
-                <p class="btn"><a href="follower-list">フォロワーリスト</a></p>
+                <p class="btn"><a href="{{ route('follower.list') }}">フォロワーリスト</a></p>
             </div>
             <p class="btn"><button type="button"><a href="/search">ユーザー検索</a></button></p>
         </div>

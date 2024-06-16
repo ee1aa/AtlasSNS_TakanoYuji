@@ -6,7 +6,11 @@
   {!! Form::open(['url' => '/postCreate']) !!}
   {{Form::token()}}
   <div class="form-group">
-    <img src="{{ asset('storage/images/' . Auth::user()->images) }}" alt="ユーザーアイコン">
+    @if(Auth::user()->images)
+      <img src="{{ asset('storage/images/' . Auth::user()->images) }}" alt="ユーザーアイコン">
+    @else
+      <img src="{{ asset('storage/images/icon1.png') }}" alt="デフォルトアイコン">
+    @endif
     {!! Form::input('text', 'post', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容']) !!}
     <button type="submit" class="post-btn btn-success pull-right"><img src="images/post.png" alt="投稿" width="20px" height="20px"></button>
     {!! Form::close() !!}

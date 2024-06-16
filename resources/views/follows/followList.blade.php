@@ -9,7 +9,11 @@
       @foreach ($followings as $following)
         <div class="user">
           <a href="{{ route('profile.show', ['user' => $following->id]) }}">
-            <img src="{{ asset('storage/images/' . $following->images) }}" alt="ユーザーアイコン" width="20" height="20">
+            @if($following->images)
+              <img src="{{ asset('storage/images/' . $following->images) }}" alt="ユーザーアイコン" width="20" height="20">
+            @else
+              <img src="{{ asset('storage\app\public\images\icon1.png') }}" alt="デフォルトアイコン" width="20" height="20">
+            @endif
           </a>
         </div>
       @endforeach

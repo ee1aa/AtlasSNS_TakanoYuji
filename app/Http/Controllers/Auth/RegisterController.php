@@ -54,13 +54,12 @@ class RegisterController extends Controller
             $password = $request->input('password');
 
             //postの処理 送信後に各データを格納する
-            DB::transaction(function () use ($username, $mail, $password) {
-                User::create([
+            User::create([
                     'username' => $username,
                     'mail' => $mail,
                     'password' => bcrypt($password),
                 ]);
-            });
+            };
 
             //セッションへデータを保存する
             $request->session()->put('username', $username);

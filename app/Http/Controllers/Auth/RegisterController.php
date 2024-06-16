@@ -55,11 +55,10 @@ class RegisterController extends Controller
 
             //postの処理 送信後に各データを格納する
             User::create([
-                    'username' => $username,
-                    'mail' => $mail,
-                    'password' => bcrypt($password),
-                ]);
-            };
+                'username' => $username,
+                'mail' => $mail,
+                'password' => bcrypt($password),
+            ]);
 
             //セッションへデータを保存する
             $request->session()->put('username', $username);

@@ -103,7 +103,8 @@ class UsersController extends Controller
         $request->validate([
             'username' => 'required|string|min:2|max:12',
             'mail' => 'required|string|email|min:5|max:40|unique:users,mail,' . $user->id,
-            'password' => 'nullable|string|min:8|max:20|confirmed',
+            'password' => 'required|regex:/^[a-zA-Z0-9]+$/|min:8|max:20|confirmed',
+            'password_confirmation' => 'required|regex:/^[a-zA-Z0-9]+$/|min:8|max:20',
             'bio' => 'nullable|string|max:150',
             'images' => 'nullable|image|mimes:png,jpg,bmp,gif,svg|max:2048',
         ]);
@@ -112,7 +113,7 @@ class UsersController extends Controller
         $user->username = $request->username;
         $user->mail = $request->mail;
         if ($request->filled('password')) {
-            $user->password = Hash::make($request->password);
+            $user->password = bcrypt($request->password);
         }
         $user->bio = $request->bio;
 

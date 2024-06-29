@@ -1,10 +1,96 @@
 @charset "UTF-8";
 
-html{
+html {
     height: 100%;
 }
 
-body{
+body {
     height: 100%;
-    background: #186AC9;
+    background: linear-gradient(to bottom, #3568C4, #71ABFD, #F8E341);
+    display: flex;
+
+    /* 要素を縦に並べる */
+    flex-direction: column;
+
+    /* 水平方向の中央寄せ */
+    justify-content: center;
+
+    /* 垂直方向の中央寄せ */
+    align-items: center;
+}
+
+header {
+    margin: 30px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.logo {
+    text-align: center;
+}
+
+.logo img {
+    display: inline-block;
+    width: 150px;
+    height: auto;
+}
+
+p {
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.box {
+    background-color: rgba(50, 50, 50, 0.4);
+    padding: 20px 20px 0 20px;
+    border-radius: 10px;
+    width: 250px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+
+.label {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.input {
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 7px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #D54E51;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    width: 50%;
+    padding: 5px;
+}
+
+.btn-danger:hover {
+    background-color: #c44144;
+}
+
+.register {
+    color: #fff;
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+h2 {
+    color: #fff;
 }

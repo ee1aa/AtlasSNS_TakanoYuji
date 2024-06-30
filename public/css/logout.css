@@ -46,7 +46,7 @@ p {
     background-color: rgba(50, 50, 50, 0.4);
     padding: 20px 20px 0 20px;
     border-radius: 10px;
-    width: 250px;
+    width: 200px;
 }
 
 .form-group {
@@ -81,7 +81,8 @@ p {
     padding: 5px;
 }
 
-.btn-danger:hover {
+.btn-danger:hover,
+.login-btn:hover {
     background-color: #c44144;
 }
 
@@ -93,4 +94,31 @@ p {
 
 h2 {
     color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.center-btn {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-btn {
+    color: #fff;
+    background-color: #D54E51;
+    border: none;
+    border-radius: 5px;
+    width: 50%;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.welcome {
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.welcome p,
+.clear p {
+    font-size: 15px;
 }

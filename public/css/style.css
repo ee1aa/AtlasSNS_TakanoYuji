@@ -38,19 +38,30 @@ header {
     border-left: 1px solid #727272;
 }
 
-.icon {
-    margin: 0 20px;
+.form-group img,
+.icon img {
+    width: 25px;
+    height: 25px;
+}
+
+.follow {
+    border-bottom: 1px solid #727272;
 }
 
 .nav-open {
     margin: 0 10px;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .nav-wrapper {
     background-color: #fff;
     display: block;
+}
+
+.post-form-container {
+    border-bottom: 1px solid #727272;
 }
 
 .menu-trigger {
@@ -133,4 +144,16 @@ header {
 
 .delete-button:hover {
     background-image: url(../images/trash-h.png);
+}
+
+.follow-btn {
+    color: #fff;
+    background-color: #0067C5;
+    border-radius: 5px;
+}
+
+.search-btn {
+    color: #fff;
+    background-color: #0067C5;
+    border-radius: 5px;
 }

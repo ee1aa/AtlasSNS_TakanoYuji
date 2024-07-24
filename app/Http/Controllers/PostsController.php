@@ -10,9 +10,27 @@ use Illuminate\Http\Request;
 class PostsController extends Controller
 {
     //投稿一覧
-    public function index(){
-        $posts = Post::latest()->get(); //投稿を最新のものから順に取得
-        return view('posts.index', ['posts'=>$posts]); //ビューへデータを送って表示
+    // public function index(){
+    //     $posts = Post::latest()->get(); //投稿を最新のものから順に取得
+    //     return view('posts.index', ['posts' => $posts]); //ビューへデータを送って表示
+    // }
+
+        //投稿一覧
+    public function index()
+    {
+        // ログインユーザーのIDを取得
+        $user_id = Auth::id();
+
+        // ログインユーザーとフォローしているユーザーのIDをモデルから取得
+        $followed_id = Auth::user()->followings()->pluck('followed_id');
+
+        // ログインユーザーとフォローしているユーザーの投稿を取得
+        $posts = Post::whereIn('user_id', $followed_id)
+                    ->orWhere('user_id', $user_id)
+                    ->latest()
+                    ->get();
+
+        return view('posts.index', ['posts' => $posts]); // ビューへデータを送って表示
     }
 
     //投稿機能

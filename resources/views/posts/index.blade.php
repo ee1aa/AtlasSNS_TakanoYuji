@@ -5,13 +5,17 @@
   {!! Form::open(['url' => '/postCreate']) !!}
   {{Form::token()}}
   <div class="form-group">
-    @if(Auth::user()->images)
-      <img src="{{ asset('storage/images/' . Auth::user()->images) }}" alt="ユーザーアイコン">
-    @else
-      <img src="{{ asset('storage/images/icon1.png') }}" alt="デフォルトアイコン">
-    @endif
-    {!! Form::input('text', 'post', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください。']) !!}
-    <button type="submit" class="post-btn btn-success pull-right"><img src="images/post.png" alt="投稿" width="20px" height="20px"></button>
+    <div class="user-form">
+      @if(Auth::user()->images)
+        <img src="{{ asset('storage/images/' . Auth::user()->images) }}" alt="ユーザーアイコン">
+      @else
+        <img src="{{ asset('storage/images/icon1.png') }}" alt="デフォルトアイコン">
+      @endif
+    </div>
+    {!! Form::textarea('post', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください。', 'rows' => 5]) !!}
+    <div class="right-under">
+      <button type="submit" class="post-btn btn-success pull-right"><img src="images/post.png" alt="投稿" ></button>
+    </div>
     {!! Form::close() !!}
   </div>
 </div>
@@ -19,14 +23,14 @@
   @foreach ($posts as $post)
   <tr class="post">
     <!-- $変数->テーブル->カラム or $controller定数->カラム -->
-    <td><img src="{{ asset('storage/images/' . $post->user->images) }}" class="rounded-circle mr-3" alt="{{ $post->user->username }}" width="25" height="25"></td>
+    <td><img src="{{ asset('storage/images/' . $post->user->images) }}" class="post-icon" alt="{{ $post->user->username }}"></td>
     <td>{{ $post->user->username }}</td>
-    <td>{{ $post->created_at }}</td>
     <br>
-    <td>{{ $post->post }}</td>
+    <td>{!! nl2br(e($post->post)) !!}</td>
+    <td>{{ $post->created_at }}</td>
     @if(Auth::id() == $post->user_id)
-    <td><a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="images/edit.png" alt="編集" width="20px" height="20px"></a></td>
-    <td><button class="btn btn-danger delete-button" action="/post/delete" data-post="{{ $post->post }}" data-post_id="{{ $post->id }}" onclick="event.preventDefault(); confirmDelete('{{ $post->post }}', '{{ $post->id }}')"></button></td>
+      <td><a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="images/edit.png" alt="編集" width="20px" height="20px"></a></td>
+      <td><button class="btn btn-danger delete-button" action="/post/delete" data-post="{{ $post->post }}" data-post_id="{{ $post->id }}" onclick="event.preventDefault(); confirmDelete('{{ $post->post }}', '{{ $post->id }}')"></button></td>
     @endif
   </tr>
   <br>

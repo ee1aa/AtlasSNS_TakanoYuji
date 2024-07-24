@@ -59,19 +59,19 @@
                 </nav>
                 <div class="follow">
                     <p>{{ Auth::user()->username }}さんの</p>
-                    <div>
-                        <p>フォロー数</p>
-                        <p>{{ Auth::user()->follow_count }}人</p>
+                    <p>フォロー数　　　{{ Auth::user()->follow_count }}人</p>
+                    <div class="text-right">
+                        <a class="follow-btn" href="{{ route('follow.list') }}">フォローリスト</a>
                     </div>
-                    <a class="follow-btn" href="{{ route('follow.list') }}">フォローリスト</a>
-                    <div>
-                        <p>フォロワー数</p>
-                        <p>{{ Auth::user()->follower_count }}人</p>
+                    <p>フォロワー数　　{{ Auth::user()->follower_count }}人</p>
+                    <div class="text-right">
+                        <a class="follow-btn" href="{{ route('follower.list') }}">フォロワーリスト</a>
                     </div>
-                    <a class="follow-btn" href="{{ route('follower.list') }}">フォロワーリスト</a>
                 </div>
             </div>
-            <a class="search-btn" href="{{ asset('/search') }}">ユーザー検索</a>
+            <div class="search-container">
+                <a class="search-btn" href="{{ asset('/search') }}">ユーザー検索</a>
+            </div>
         </div>
     </div>
     <footer>

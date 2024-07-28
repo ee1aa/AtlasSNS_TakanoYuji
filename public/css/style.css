@@ -226,8 +226,44 @@ header {
     margin-left: 50px;
 }
 
-/* .post-icon {
-    margin: 20px 20px 20px 100px;
+.post {
+    display: flex;
+    align-items: flex-start;
+    /* オプション：上揃え */
+    border-bottom: 1px solid #727272;
+}
+
+.user-icon {
+    margin-right: 20px;
+    /* オプション：要素間のスペースを調整 */
+}
+
+.name-post {
+    flex-grow: 1;
+    /* コンテンツに応じてこの要素が広がる */
+}
+
+.created-buttons {
+    display: flex;
+    flex-direction: column;
+    /* 縦並びにする */
+    align-items: flex-start;
+    /* オプション：左揃え */
+}
+
+.buttons {
+    display: flex;
+    margin-top: 10px;
+    /* オプション：要素間のスペースを調整 */
+}
+
+.buttons img,
+.buttons button {
+    margin-left: 10px;
+    /* ボタンとアイコンの間のスペースを調整 */
+}
+
+.post-icon {
     width: 50px;
     height: 50px;
-} */
+}

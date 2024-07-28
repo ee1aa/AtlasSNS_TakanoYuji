@@ -7,7 +7,7 @@
   <div class="form-group">
     <div class="user-form">
       @if(Auth::user()->images)
-        <img src="{{ asset('storage/images/' . Auth::user()->images) }}" alt="ユーザーアイコン">
+        <img src="{{ asset('storage/images/' . Auth::user()->images) }}" alt="{{ Auth::user()->username }}">
       @else
         <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン">
       @endif
@@ -21,18 +21,29 @@
 </div>
 <div class="index">
   @foreach ($posts as $post)
-  <tr class="post">
+  <div class="post">
     <!-- $変数->テーブル->カラム or $controller定数->カラム -->
-    <td><img src="{{ asset('storage/images/' . $post->user->images) }}" class="post-icon" alt="{{ $post->user->username }}"></td>
-    <td>{{ $post->user->username }}</td>
-    <br>
-    <td>{!! nl2br(e($post->post)) !!}</td>
-    <td>{{ $post->created_at }}</td>
-    @if(Auth::id() == $post->user_id)
-      <td><a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="images/edit.png" alt="編集" width="20px" height="20px"></a></td>
-      <td><button class="btn btn-danger delete-button" action="/post/delete" data-post="{{ $post->post }}" data-post_id="{{ $post->id }}" onclick="event.preventDefault(); confirmDelete('{{ $post->post }}', '{{ $post->id }}')"></button></td>
-    @endif
-  </tr>
+    <div class="user-icon">
+      @if($post->user->images)
+        <img src="{{ asset('storage/images/' . $post->user->images) }}" class="post-icon" alt="{{ $post->user->username }}">
+      @else
+        <img src="{{ asset('images/icon1.png') }}" class="post-icon" alt="デフォルトアイコン">
+      @endif
+    </div>
+    <div class="name-post">
+      <p>{{ $post->user->username }}</p>
+      <p>{!! nl2br(e($post->post)) !!}</p>
+    </div>
+    <div class="created-buttons">
+      <p>{{ $post->created_at }}</p>
+      <div class="buttons">
+        @if(Auth::id() == $post->user_id)
+          <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="images/edit.png" alt="編集" width="20px" height="20px"></a>
+          <button class="btn btn-danger delete-button" action="/post/delete" data-post="{{ $post->post }}" data-post_id="{{ $post->id }}" onclick="event.preventDefault(); confirmDelete('{{ $post->post }}', '{{ $post->id }}')"></button>
+        @endif
+      </div>
+    </div>
+  </div>
   <br>
   @endforeach
   <!-- 編集モーダルの中身 -->

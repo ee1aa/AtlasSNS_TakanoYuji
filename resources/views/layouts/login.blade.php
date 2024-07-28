@@ -36,7 +36,7 @@
                     @if(Auth::user()->images)
                         <img src="{{ asset('storage/images/' . Auth::user()->images) }}" alt="ユーザーアイコン">
                     @else
-                        <img src="{{ asset('icon1.png') }}" alt="デフォルトアイコン">
+                        <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン">
                     @endif
                 </div>
             </div>

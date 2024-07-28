@@ -9,7 +9,7 @@
       @if(Auth::user()->images)
         <img src="{{ asset('storage/images/' . Auth::user()->images) }}" alt="ユーザーアイコン">
       @else
-        <img src="{{ asset('storage/images/icon1.png') }}" alt="デフォルトアイコン">
+        <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン">
       @endif
     </div>
     {!! Form::textarea('post', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください。', 'rows' => 5]) !!}

@@ -254,13 +254,21 @@ header {
     /* 下部の余白を確保 */
 }
 
+.post {
+    position: relative;
+    padding-bottom: 60px;
+    /* ボタンの高さ分のスペースを確保 */
+}
+
 .buttons {
-    display: flex;
-    margin-top: 100%;
-    /* オプション：要素間のスペースを調整 */
     position: absolute;
-    bottom: 0;
-    right: 0;
+    right: 10px;
+    /* 右からの距離を調整 */
+    bottom: 10px;
+    /* 下からの距離を調整 */
+    display: flex;
+    gap: 10px;
+    /* ボタン間のスペースを調整 */
 }
 
 .buttons img,

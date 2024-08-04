@@ -146,8 +146,8 @@ header {
 }
 
 .delete-button {
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
     background-image: url(../images/trash.png);
     background-size: cover;
     background-color: #fff;
@@ -231,6 +231,7 @@ header {
     align-items: flex-start;
     /* オプション：上揃え */
     border-bottom: 1px solid #727272;
+    padding: 0px 20px 20px 100px;
 }
 
 .user-icon {
@@ -247,14 +248,19 @@ header {
     display: flex;
     flex-direction: column;
     /* 縦並びにする */
-    align-items: flex-start;
     /* オプション：左揃え */
+    position: relative;
+    padding-bottom: 50px;
+    /* 下部の余白を確保 */
 }
 
 .buttons {
     display: flex;
-    margin-top: 10px;
+    margin-top: 100%;
     /* オプション：要素間のスペースを調整 */
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 .buttons img,
@@ -266,4 +272,8 @@ header {
 .post-icon {
     width: 50px;
     height: 50px;
+}
+
+.index {
+    margin-top: 20px;
 }

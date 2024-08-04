@@ -35,10 +35,10 @@
       <p>{!! nl2br(e($post->post)) !!}</p>
     </div>
     <div class="created-buttons">
-      <p>{{ $post->created_at }}</p>
+      <p>{{ $post->created_at->format('Y-m-d H:i') }}</p>
       <div class="buttons">
         @if(Auth::id() == $post->user_id)
-          <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="images/edit.png" alt="編集" width="20px" height="20px"></a>
+          <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="images/edit.png" alt="編集" width="50px" height="50px"></a>
           <button class="btn btn-danger delete-button" action="/post/delete" data-post="{{ $post->post }}" data-post_id="{{ $post->id }}" onclick="event.preventDefault(); confirmDelete('{{ $post->post }}', '{{ $post->id }}')"></button>
         @endif
       </div>

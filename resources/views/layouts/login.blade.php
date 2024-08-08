@@ -51,7 +51,7 @@
                 <nav class="g-navi">
                     <div class="container nav-wrapper">
                         <ul>
-                            <li class="nav-item active"><a class="nav-link" href="/top">HOME</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('top') }}">HOME</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('profile.edit') }}">プロフィール編集</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">ログアウト</a></li>
                         </ul>

@@ -49,7 +49,7 @@
         <div id="side-bar">
             <div id="confirm">
                 <nav class="g-navi">
-                    <div class="container nav-wrapper">
+                    <div class="nav-container nav-wrapper">
                         <ul>
                             <li class="nav-item"><a class="nav-link" href="{{ route('top') }}">HOME</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('profile.edit') }}">プロフィール編集</a></li>

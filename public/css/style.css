@@ -70,7 +70,6 @@ header {
 
 .nav-wrapper {
     background-color: #fff;
-    display: flex;
 }
 
 ul {
@@ -120,13 +119,13 @@ ul {
 }
 
 .g-navi {
-    position: fixed;
+    position: absolute;
     display: none;
 }
 
 .g-navi.active {
     display: block;
-    width: 100%;
+    width: 20%;
 }
 
 .post-btn {
@@ -309,4 +308,9 @@ ul {
 
 .index {
     margin-top: 20px;
+}
+
+.edit-form {
+    border: 1px solid #A1A1A1;
+    background-color: #EFEFEF;
 }

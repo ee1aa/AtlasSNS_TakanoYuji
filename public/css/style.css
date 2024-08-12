@@ -50,7 +50,7 @@ header {
 .follow {
     border-bottom: 1px solid #727272;
     margin-bottom: 30px;
-    padding: 0 20px 20px 20px;
+    padding: 0 0 20px 20px;
     line-height: 30px;
     font-size: 12px;
     width: 100%;
@@ -70,6 +70,8 @@ header {
 
 .nav-wrapper {
     background-color: #fff;
+    border-bottom: 1px solid #0067C5;
+    border-left: 1px solid #0067C5;
 }
 
 ul {
@@ -79,7 +81,7 @@ ul {
 }
 
 .nav-item {
-    padding: 10px 0;
+    height: 50px;
 }
 
 .nav-link {
@@ -211,10 +213,52 @@ ul {
     text-align: center;
 }
 
-.form-group {
-    text-align: center;
+.edit-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    /* フォーム全体の高さを確保して、ボタンが下に配置されるようにする */
+}
+
+.btn.edit-btn {
+    align-self: flex-end;
+    margin-top: 20px;
+    /* ボタンを下部に配置し、間隔を追加 */
+}
+
+.edit-mode {
     display: flex;
     align-items: flex-start;
+    gap: 20px;
+    /* アイコンとフォームの間のスペースを調整 */
+}
+
+.edit-group {
+    display: flex;
+}
+
+.label-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    /* ラベル間のスペースを調整 */
+}
+
+.form-group {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    /* 入力欄間のスペースを調整 */
+}
+
+.edit-form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    /* 入力欄間のスペースを調整 */
 }
 
 .form-group img {

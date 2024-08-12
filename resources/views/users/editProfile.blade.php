@@ -31,9 +31,8 @@
             @if($user->images)
               <img src="{{ asset('storage/images/' . $user->images) }}" alt="アイコン画像" class="mt-2" width="100">
             @endif
+          <button type="submit" class="btn edit-btn">更新</button>
         </div>
-
-        <button type="submit" class="btn edit-btn">更新</button>
       </form>
     </div>
   </div>

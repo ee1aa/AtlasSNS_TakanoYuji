@@ -222,16 +222,26 @@ ul {
 }
 
 .btn.edit-btn {
-    align-self: flex-end;
+    display: block;
+    align-self: flex-start;
     margin-top: 20px;
     /* ボタンを下部に配置し、間隔を追加 */
+    color: #fff;
+    background-color: #D54E51;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    width: 50%;
+    padding: 5px;
 }
 
 .edit-mode {
     display: flex;
-    align-items: flex-start;
+    /* align-items: flex-start; */
     gap: 20px;
     /* アイコンとフォームの間のスペースを調整 */
+    margin: 50px 100px;
+    justify-content: space-between;
 }
 
 .edit-group {

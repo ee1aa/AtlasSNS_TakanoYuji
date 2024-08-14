@@ -241,11 +241,13 @@ ul {
     gap: 20px;
     /* アイコンとフォームの間のスペースを調整 */
     margin: 50px 100px;
-    justify-content: space-between;
 }
 
 .edit-group {
-    display: flex;
+    display: block;
+    margin-top: 25px;
+    margin-left: 20px;
+    justify-content: flex-end;
 }
 
 .label-group {
@@ -269,6 +271,10 @@ ul {
     justify-content: flex-start;
     gap: 10px;
     /* 入力欄間のスペースを調整 */
+}
+
+.edit-total {
+    display: flex;
 }
 
 .form-group img {

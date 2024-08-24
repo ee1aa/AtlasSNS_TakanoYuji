@@ -387,5 +387,7 @@ ul {
     font-size: 16px;
     border: 1px solid #A1A1A1;
     background-color: #EFEFEF;
-    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }

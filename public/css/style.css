@@ -376,3 +376,16 @@ ul {
     border: 1px solid #A1A1A1;
     background-color: #EFEFEF;
 }
+
+.justify-content-center {
+    justify-content: center;
+    display: flex;
+}
+
+.image-box {
+    height: 54px;
+    font-size: 16px;
+    border: 1px solid #A1A1A1;
+    background-color: #EFEFEF;
+    text-align: center;
+}

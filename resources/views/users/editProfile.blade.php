@@ -32,6 +32,7 @@
               @if($user->images)
                 <img src="{{ asset('storage/images/' . $user->images) }}" alt="アイコン画像" class="mt-2" width="100">
               @endif
+            <label type="file" id="images" name="images" for="images" class="image-box">ファイルを選択</label>
           </div>
         </div>
         <button type="submit" class="btn edit-btn">更新</button>

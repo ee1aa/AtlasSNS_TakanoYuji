@@ -243,6 +243,11 @@ ul {
     margin: 50px 100px;
 }
 
+.edit-mode-icon {
+    height: 50px;
+    width: 50px;
+}
+
 .edit-group {
     display: block;
     margin-top: 25px;
@@ -250,26 +255,10 @@ ul {
     justify-content: flex-end;
 }
 
-.label-group {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 10px;
-    /* ラベル間のスペースを調整 */
-}
-
 .form-group {
     display: flex;
     justify-content: flex-start;
-    gap: 10px;
-    /* 入力欄間のスペースを調整 */
-}
-
-.edit-form-group {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 10px;
+    gap: 50px;
     /* 入力欄間のスペースを調整 */
 }
 
@@ -390,4 +379,5 @@ ul {
     align-items: center;
     display: flex;
     justify-content: center;
+    color: grey;
 }

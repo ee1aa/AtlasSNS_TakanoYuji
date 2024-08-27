@@ -33,9 +33,9 @@
           </div>
           <div class="edit-style">
             <label for="bio">自己紹介</label>
-            <textarea class="edit-form" id="bio" name="bio" rows="3">{{ old('bio', $user->bio) }}</textarea>
+            <input type="text" class="edit-form" id="bio" name="bio" value="{{ old('bio', $user->bio) }}">
           </div>
-          <div class="edit-style">
+          <div class="edit-style select-icon">
             <label>アイコン画像</label>
             <input type="file" class="edit-form-file" id="images" name="images" style="display:none">
             <label type="file" id="images" name="images" for="images" class="image-box">ファイルを選択</label>

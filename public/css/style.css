@@ -372,6 +372,7 @@ ul {
 }
 
 .image-box {
+    width: 200px;
     height: 54px;
     font-size: 16px;
     border: 1px solid #A1A1A1;
@@ -380,4 +381,8 @@ ul {
     display: flex;
     justify-content: center;
     color: grey;
+}
+
+.select-icon {
+    display: flex;
 }

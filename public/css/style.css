@@ -238,6 +238,7 @@ ul {
 .edit-mode {
     display: flex;
     /* align-items: flex-start; */
+    justify-content: center;
     gap: 20px;
     /* アイコンとフォームの間のスペースを調整 */
     margin: 50px 100px;

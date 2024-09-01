@@ -21,14 +21,14 @@
   @foreach ($users as $user)
   @if($user->id !== Auth::user()->id)
   <div class="user-flex">
-    <div>
+    <div class="icon-area">
       @if($user->images)
         <img src="{{ asset('storage/images/' . $user->images) }}" alt="{{ $user->username }}のアイコン" class="list-icon">
       @else
         <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン" class="list-icon">
       @endif
     </div>
-    <div>{{ $user->username }}</div>
+    <div class="user-info">{{ $user->username }}</div>
     <div class="follow-unfollow">
       @if (Auth::user()->followCheck($user->id))
         <form action="/follow.unfollow" method="post">

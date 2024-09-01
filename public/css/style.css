@@ -444,7 +444,7 @@ ul {
 .user-flex {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 
@@ -473,4 +473,29 @@ ul {
 
 .follow-unfollow {
     margin-left: 50px;
+    flex-shrink: 0;
+}
+
+.user-list {
+    margin-bottom: 10px;
+    padding: 30px 200px;
+}
+
+.icon-area {
+    flex-shrink: 0;
+    width: 40px;
+    margin-right: 10px;
+}
+
+.user-info {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 10px;
+}
+
+.undo-follow,
+.do-follow {
+    white-space: nowrap;
 }

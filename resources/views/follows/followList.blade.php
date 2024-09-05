@@ -1,30 +1,33 @@
 @extends('layouts.login')
 
 @section('content')
-<div class="container">
-  <h2>フォローリスト</h2>
-  <div class="row">
-    <!-- フォローしているユーザーのアイコンを表示 -->
-    @if(isset($followings) && count($followings) > 0)
-      @foreach ($followings as $following)
-        <div class="user">
-          <a href="{{ route('profile.show', ['user' => $following->id]) }}">
-            @if($following->images)
-              <img src="{{ asset('storage/images/' . $following->images) }}" alt="ユーザーアイコン" width="20" height="20">
-            @else
-              <img src="{{ asset('storage\app\public\images\icon1.png') }}" alt="デフォルトアイコン" width="20" height="20">
-            @endif
-          </a>
-        </div>
-      @endforeach
-    @else
-      <p>フォローしているユーザーはいません。</p>
-    @endif
+<div class="follow-container">
+  <div class="follow-list">
+    <h2>フォローリスト</h2>
+    <div class="user-row">
+      <!-- フォローしているユーザーのアイコンを表示 -->
+      @if(isset($followings) && count($followings) > 0)
+        @foreach ($followings as $following)
+          <div class="user">
+            <a href="{{ route('profile.show', ['user' => $following->id]) }}">
+              @if($following->images)
+                <img src="{{ asset('storage/images/' . $following->images) }}" alt="ユーザーアイコン" class="list-icon">
+              @else
+                <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン" class="list-icon">
+              @endif
+            </a>
+          </div>
+        @endforeach
+      @else
+        <p>フォローしているユーザーはいません。</p>
+      @endif
+    </div>
   </div>
+
 
   <div class="follow_post mt-5">
     <h3>フォロー中のユーザーの投稿</h3>
-    <div class="row">
+    <div class="post-list">
       @if(isset($posts) && count($posts) > 0)
         @foreach($posts as $post)
           <div class="col-md-4 mb-3">

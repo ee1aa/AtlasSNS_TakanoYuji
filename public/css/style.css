@@ -98,7 +98,8 @@ ul {
     color: #fff;
 }
 
-.post-form-container {
+.post-form-container,
+.follow-list {
     border-bottom: 5px solid #B0B0B0;
 }
 
@@ -498,4 +499,28 @@ ul {
 .undo-follow,
 .do-follow {
     white-space: nowrap;
+}
+
+.user-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    /* アイコン間のスペース */
+    margin-bottom: 20px;
+    justify-content: flex-start;
+    /* アイコンを左寄せ */
+}
+
+.user {
+    width: calc(10% - 10px);
+    /* 10個で折り返すための幅設定 */
+    max-width: 60px;
+    /* アイコンが広がらないように最大幅を設定 */
+}
+
+.follow-list {
+    display: flex;
+    gap: 20px;
+    /* h2とアイコンの間のスペース */
+    align-items: center;
 }

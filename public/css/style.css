@@ -43,8 +43,8 @@ header {
 
 .form-group img,
 .icon img {
-    width: 25px;
-    height: 25px;
+    width: 50px;
+    height: 50px;
 }
 
 .follow {
@@ -261,8 +261,6 @@ ul {
 .form-group {
     display: flex;
     justify-content: flex-start;
-    gap: 50px;
-    /* 入力欄間のスペースを調整 */
 }
 
 .edit-total {
@@ -468,8 +466,8 @@ ul {
 }
 
 .list-icon {
-    height: 30px;
-    width: 30px;
+    height: 50px;
+    width: 50px;
 }
 
 .follow-unfollow {
@@ -504,23 +502,22 @@ ul {
 .user-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 25px;
-    /* アイコン間のスペース */
-    margin-bottom: 20px;
     justify-content: flex-start;
     /* アイコンを左寄せ */
 }
 
 .user {
-    width: calc(10% - 10px);
-    /* 10個で折り返すための幅設定 */
-    max-width: 60px;
-    /* アイコンが広がらないように最大幅を設定 */
+    flex: 0 0 10%;
+    /* 1行に10個のアイコンを表示 */
+    text-align: center;
+    margin-right: -4.4px;
 }
 
 .follow-list {
     display: flex;
-    gap: 20px;
-    /* h2とアイコンの間のスペース */
-    align-items: center;
+    padding: 20px 50px;
+}
+
+.follow-title {
+    padding-top: 17.5px;
 }

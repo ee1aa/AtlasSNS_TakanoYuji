@@ -3,7 +3,7 @@
 @section('content')
 <div class="follow-container">
   <div class="follow-list">
-    <h2>フォローリスト</h2>
+    <h2 class="follow-title">フォローリスト</h2>
     <div class="user-row">
       <!-- フォローしているユーザーのアイコンを表示 -->
       @if(isset($followings) && count($followings) > 0)
@@ -26,22 +26,25 @@
 
 
   <div class="follow_post mt-5">
-    <h3>フォロー中のユーザーの投稿</h3>
-    <div class="post-list">
+    <div class="index">
       @if(isset($posts) && count($posts) > 0)
         @foreach($posts as $post)
-          <div class="col-md-4 mb-3">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex align-items-center mb-3">
-                  <a href="{{ route('profile.show', ['user' => $following->id]) }}">
-                    <img src="{{ asset('storage/images/' . $following->images) }}" alt="ユーザーアイコン" width="20" height="20">
-                  </a>
-                  <h5 class="card-title mb-0">{{ $post->user->username }}</h5>
-                </div>
-                <p class="card-text">{{ $post->post }}</p>
-                <p class="text-muted">{{ $post->created_at->format('Y-m-d H:i') }}</p>
-              </div>
+          <div class="post">
+            <div class="user-icon">
+              <a href="{{ route('profile.show', ['user' => $following->id]) }}">
+                @if($following->images)
+                  <img src="{{ asset('storage/images/' . $following->images) }}" alt="ユーザーアイコン" class="list-icon">
+                @else
+                  <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン" class="list-icon">
+                @endif
+              </a>
+            </div>
+            <div class="name-post">
+              <p>{{ $post->user->username }}</p>
+              <p>{!! nl2br(e($post->post)) !!}</p>
+            </div>
+            <div class="created-buttons">
+              <p>{{ $post->created_at->format('Y-m-d H:i') }}</p>
             </div>
           </div>
         @endforeach

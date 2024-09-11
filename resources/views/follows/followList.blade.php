@@ -29,7 +29,7 @@
     <div class="index">
       @if(isset($posts) && count($posts) > 0)
         @foreach($posts as $post)
-          <div class="post">
+          <div class="follow-post">
             <div class="user-icon">
               <a href="{{ route('profile.show', ['user' => $following->id]) }}">
                 @if($following->images)

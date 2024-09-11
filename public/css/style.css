@@ -360,6 +360,16 @@ ul {
     margin-top: 20px;
 }
 
+.follow-post {
+    margin-top: 20px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    /* オプション：上揃え */
+    border-bottom: 1px solid #727272;
+    padding: 0px 20px 60px 100px;
+}
+
 .edit-form {
     height: 18px;
     font-size: 16px;
@@ -516,6 +526,7 @@ ul {
 .follow-list {
     display: flex;
     padding: 20px 50px;
+    gap: 10px;
 }
 
 .follow-title {

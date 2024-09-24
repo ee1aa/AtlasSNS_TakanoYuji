@@ -1,51 +1,63 @@
 @extends('layouts.login')
 
 @section('content')
-<div class="container">
-  <div class="profile">
-    <div class="profile-header">
-      <img src="{{ asset('storage/images/' . $user->images) }}" alt="ユーザーアイコン" class="profile-icon">
-      <h2>ユーザー名</h2>
-      <h2>{{ $user->username }}</h2>
+<div class="post-form-container">
+  <div class="form-group">
+    <div class="user-form">
+      @if(Auth::user()->images)
+        <img src="{{ asset('storage/images/' . $user->images) }}" alt="{{ Auth::user()->username }}">
+      @else
+        <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン">
+      @endif
     </div>
-    <div class="profile-bio">
-      <p>自己紹介</p>
-      <p>{{ $user->bio }}</p>
+    <div class="profile-column form-control">
+      <div class="profile-header">
+        <p>ユーザー名　　　　</p>
+        <p>{{ $user->username }}</p>
+      </div>
+      <div class="profile-bio">
+        <p>自己紹介　　　　　</p>
+        <p>{{ $user->bio }}</p>
+      </div>
     </div>
-    <div class="follow-btn">
+    <div class="follow-unfollow right-under">
       @if (Auth::user()->followCheck($user->id))
         <form action="/follow.unfollow" method="post">
           @csrf
           <input type="hidden" name="user_id" value="{{ $user->id }}">
-          <button type="submit" class="btn btn-primary">フォロー解除</button>
+          <button type="submit" class="btn btn-primary undo-follow post-btn">フォロー解除</button>
         </form>
       @else
         <form action="/follow.follow" method="post">
           @csrf
           <input type="hidden" name="user_id" value="{{ $user->id }}">
-          <button type="submit" class="btn btn-primary">フォローする</button>
+          <button type="submit" class="btn btn-primary do-follow post-btn">フォローする</button>
         </form>
       @endif
     </div>
   </div>
-  <h3>投稿一覧</h3>
-  @if($posts->isEmpty())
-    <p>投稿がありません。</p>
-  @else
-    <div class="posts-list">
-      @foreach($posts as $post)
-        <div class="post-header">
-          <img src="{{ $user->images ? asset('storage/images/' . $user->images) : asset('icon1.png') }}" alt="ユーザーアイコン" width="20px" height="20px">
-          <div class="post-info">
-            <p>{{ $user->username }}</p>
-            <p>{{ $post->created_at->format('Y-m-d H:i') }}</p>
-          </div>
-        </div>
-        <div class="post-content">
-          <p>{{ $post->post }}</p>
-        </div>
-      @endforeach
+</div>
+
+<div class="index">
+  @foreach ($posts as $post)
+  <div class="post">
+    <!-- $変数->テーブル->カラム or $controller定数->カラム -->
+    <div class="user-icon">
+      @if($post->user->images)
+        <img src="{{ asset('storage/images/' . $post->user->images) }}" class="post-icon" alt="{{ $post->user->username }}">
+      @else
+        <img src="{{ asset('images/icon1.png') }}" class="post-icon" alt="デフォルトアイコン">
+      @endif
     </div>
-  @endif
+    <div class="name-post">
+      <p>{{ $post->user->username }}</p>
+      <p>{!! nl2br(e($post->post)) !!}</p>
+    </div>
+    <div class="created-buttons">
+      <p>{{ $post->created_at->format('Y-m-d H:i') }}</p>
+    </div>
+  </div>
+  <br>
+  @endforeach
 </div>
 @endsection

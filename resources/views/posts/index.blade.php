@@ -53,10 +53,12 @@
       <form action="/post/update" method="post">
         <textarea name="upPost" class="modal_post"></textarea>
         <input type="hidden" name="id" class="modal_id" value="">
-        <input type="submit" value="更新">
+        <!-- この下に編集ボタンの画像を入れる。ホバー時削除ボタンの面取り -->
+        <div class="center-center">
+          <button type="submit" class="edit-check"><img class="edit-check-img" src="images/edit.png" alt="編集" ></button>
+        </div>
         {{ csrf_field() }}
       </form>
-      <a class="js-modal-close" href="">閉じる</a>
     </div>
   </div>
   <!-- 削除モーダルの中身 -->

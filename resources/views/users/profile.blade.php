@@ -4,10 +4,10 @@
 <div class="post-form-container">
   <div class="form-group">
     <div class="user-form">
-      @if(Auth::user()->images)
-        <img src="{{ asset('storage/images/' . $user->images) }}" alt="{{ Auth::user()->username }}">
+      @if($user->images)
+        <img src="{{ asset('storage/images/' . $user->images) }}" alt="{{ $user->username }}のアイコン" class="list-icon">
       @else
-        <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン">
+        <img src="{{ asset('images/icon1.png') }}" alt="デフォルトアイコン" class="list-icon">
       @endif
     </div>
     <div class="profile-column form-control">

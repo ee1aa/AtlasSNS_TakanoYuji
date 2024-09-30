@@ -41,9 +41,9 @@ class UsersController extends Controller
         $user_name = $request->input('user_id');
         $follower = auth()->user(); //フォローしているか確認
         $is_following = $follower->followings()->where('followed_id', $user_name)->exists(); //followings:ユーザーが特定のユーザーをフォロー中か返す
-        if (!$is_following) { //もしフォローしていなければ
-            $follower->follow($user_name); //フォローする
-        }
+        // if (!$is_following) { //もしフォローしていなければ
+        //     $follower->follow($user_name); //フォローする
+        // }
 
         //フォローの登録処理（followsテーブルに登録する）
         //followsテーブルの'following_id', 'followed_id'に変数を当てはめる
@@ -62,12 +62,10 @@ class UsersController extends Controller
         $follower = auth()->user(); //フォローしているか確認
         $is_following = $follower->followings()->where('followed_id', $user_name)->exists(); //followings:ユーザーが特定のユーザーをフォロー中か返す
         if ($is_following) { //もしフォローしていれば
-            $follower->follow($user_name); //フォロー解除する
+
+            //フォローの削除処理（followsテーブルからfollowed_idに該当するIDを削除）
+            $deleted = Follow::where('followed_id', $user_name)->delete();
         }
-
-        //フォローの削除処理（followsテーブルからfollowed_idに該当するIDを削除）
-        $deleted = Follow::where('followed_id', $user_name)->delete();
-
         return back();
     }
 

@@ -51,7 +51,7 @@
     <div class="modal__bg js-modal-close"></div>
     <div class="modal__content">
       <form action="/post/update" method="post">
-        <textarea name="upPost" class="modal_post"></textarea>
+        {!! Form::textarea('post', null, ['required', 'class' => 'modal_post', 'name' => 'upPost', 'placeholder' => '投稿内容を入力してください。', 'rows' => 5]) !!}
         <input type="hidden" name="id" class="modal_id" value="">
         <!-- この下に編集ボタンの画像を入れる。ホバー時削除ボタンの面取り -->
         <div class="center-center">

@@ -30,7 +30,8 @@ return [
         'array'   => 'The :attribute must have between :min and :max items.',
     ],
     'boolean'              => 'The :attribute field must be true or false.',
-    'confirmed'            => 'The :attribute confirmation does not match.',
+    // 'confirmed'            => 'The :attribute confirmation does not match.',
+    'confirmed'            => ':attributeが一致していません。',
     'date'                 => 'The :attribute is not a valid date.',
     'date_format'          => 'The :attribute does not match the format :format.',
     'different'            => 'The :attribute and :other must be different.',
@@ -38,7 +39,8 @@ return [
     'digits_between'       => 'The :attribute must be between :min and :max digits.',
     'dimensions'           => 'The :attribute has invalid image dimensions.',
     'distinct'             => 'The :attribute field has a duplicate value.',
-    'email'                => 'The :attribute must be a valid email address.',
+    // 'email'                => 'The :attribute must be a valid email address.',
+    'email'                => 'メールアドレスの形式で入力して下さい。',
     'exists'               => 'The selected :attribute is invalid.',
     'file'                 => 'The :attribute must be a file.',
     'filled'               => 'The :attribute field must have a value.',
@@ -67,8 +69,10 @@ return [
     'not_in'               => 'The selected :attribute is invalid.',
     'numeric'              => 'The :attribute must be a number.',
     'present'              => 'The :attribute field must be present.',
-    'regex'                => 'The :attribute format is invalid.',
-    'required'             => 'The :attribute field is required.',
+    // 'regex'                => 'The :attribute format is invalid.',
+    'regex'                => ':attributeは英数字のみで入力して下さい。',
+    // 'required'             => 'The :attribute field is required.',
+    'required'             => ':attributeは入力必須です。',
     'required_if'          => 'The :attribute field is required when :other is :value.',
     'required_unless'      => 'The :attribute field is required unless :other is in :values.',
     'required_with'        => 'The :attribute field is required when :values is present.',
@@ -84,7 +88,8 @@ return [
     ],
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => 'The :attribute has already been taken.',
+    // 'unique'               => 'The :attribute has already been taken.',
+    'unique'               => '登録済みの:attributeは使用不可です。',
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
 
@@ -116,6 +121,13 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'username' => 'ユーザー名',
+        'mail' => 'メールアドレス',
+        'password' => 'パスワード',
+        'password_confirmation' => 'パスワード確認',
+        'bio' => '自己紹介',
+        'images' => 'アイコン画像',
+    ],
 
 ];

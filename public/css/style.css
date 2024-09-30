@@ -273,7 +273,6 @@ ul {
 .form-group img {
     width: 50px;
     height: 50px;
-    border-radius: 5px;
 }
 
 .form-control {
@@ -572,4 +571,11 @@ ul {
 .edit-check-img {
     width: 50px;
     height: 50px;
+}
+
+
+.invalid-feedback {
+    margin-top: 10px;
+    color: #c44144;
+    font-weight: bold;
 }

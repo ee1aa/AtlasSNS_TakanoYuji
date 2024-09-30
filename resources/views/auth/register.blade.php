@@ -7,7 +7,7 @@
 <div class="register_error">
   <ul>
     @foreach ($errors->all() as $error)
-    <li>{{ $error }}</li>
+    <li class="error-massage">{{ $error }}</li>
     @endforeach
   </ul>
 </div>

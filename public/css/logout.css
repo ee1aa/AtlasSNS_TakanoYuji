@@ -139,3 +139,7 @@ h2 {
     color: #c44144;
     font-weight: bold;
 }
+
+.error-massage {
+    margin-bottom: 5px;
+}

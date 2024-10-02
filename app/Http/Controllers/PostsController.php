@@ -71,22 +71,36 @@ class PostsController extends Controller
     }
 
     //投稿内容の削除機能
-    public function postDelete(Request $request){
-        // 投稿IDを取得
-        $id = $request->input('post_id');
-        // dd($request, $id);
+public function postDelete(Request $request)
+{
+    // 投稿IDを取得し、バリデーションを追加
+    // required リクエストにpost_idが含まれているか（削除対象を特定する）
+    // integer  post_idが整数であるか（それ以外の不正データを防ぐ）
+    // exists   リクエストされたpost_idに対応するレコードがpostテーブルに存在するか（無意味な削除クエリを送らないようにする）
+    $request->validate([
+        'post_id' => 'required|integer|exists:posts,id',
+    ]);
 
-        //投稿内容をテーブルから削除
+    // 投稿IDを取得
+    $id = $request->input('post_id');
+
+    try {
+        // 投稿内容をテーブルから削除
         $deleted = Post::where('id', $id)->delete();
 
-        // 投稿一覧へ戻る
-        if($deleted){
+        if ($deleted) {
+            // 削除成功時
             return redirect('/top')->with('success', '投稿を削除しました。');
+        } else {
+            // 削除対象が存在しない場合
+            return redirect()->back()->with('error', '削除する投稿が存在しません。');
         }
-        else{
-            return redirect()->back()->with('error', '投稿の削除に失敗しました。');
-        }
+    } catch (\Exception $e) {
+        // エラー発生時
+        return redirect()->back()->with('error', '投稿の削除中にエラーが発生しました。');
     }
+}
+
 
     public function followList(){
         // ログインユーザーがフォローしているユーザーのIDを取得

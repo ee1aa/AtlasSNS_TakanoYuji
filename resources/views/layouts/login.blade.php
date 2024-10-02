@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <!--IEブラウザ対策-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- CSRFトークンの設定 -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="ページの内容を表す文章" />
     <title></title>
     <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">

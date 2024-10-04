@@ -40,7 +40,7 @@
     <div class="buttons">
       @if(Auth::id() == $post->user_id)
         <a class="js-modal-open" href="" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="images/edit.png" alt="編集" width="50px" height="50px"></a>
-        <button class="btn btn-danger delete-button" action="/post/delete" data-post="{{ $post->post }}" data-post_id="{{ $post->id }}" onclick="event.preventDefault(); confirmDelete('{{ $post->post }}', '{{ $post->id }}')"></button>
+        <button class="btn btn-danger delete-button" action="/post/delete" data-post="{{ $post->post }}" data-post_id="{{ $post->id }}" onclick="event.preventDefault(); confirmDelete('{{ json_encode($post->post) }}', '{{ $post->id }}')"></button>
       @endif
     </div>
   </div>
